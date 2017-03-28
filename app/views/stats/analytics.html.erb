@@ -1,0 +1,88 @@
+<div class="row" style="margin-left: 2%; margin-right: 2%;">
+
+
+<div id="services" class="col-md-12">
+     <h1 class="page-header">
+        모범독서가(<%= Date.today - 1%>)
+     </h1>
+    <% runk = 1 %>
+
+       <h3>로작</h3>
+    <% @korean_books_ranking.each do |ranking| %>
+
+   <div class ="col-sm-4 col-xs-4">
+
+      <div class="panel panel-warning" style = "margin-top: 30px;">
+            <div class="panel-heading"><h2><%= runk %>위　<%= ranking.korean_books %>페지</h2>
+            </div>
+            <div class="panel-body">
+              <div style="font-size: 27px;">
+              <a href="<%= ranking.user.image.url %>" data-lightbox="任意の名前" data-title="<%= ranking.user.nickname %>">
+                <%= image_tag ranking.user.image.url, :size => '60x60' %></a>　
+                <%= ranking.user.nickname %>(<%= ranking.user.group_id %>분조)
+               </div>
+              <% runk = runk + 1 %>
+            </div>
+      </div>
+   </div>
+<% end %>
+</div>
+
+
+<div id="services" class="col-lg-12">
+    <% runk = 1 %>
+    <h3>일반서적</h3>
+    <% @other_books_ranking.each do |ranking| %>
+
+   <div class ="col-sm-4 col-xs-4">
+      <div class="panel panel-warning" style = "margin-top: 30px;">
+            <div class="panel-heading" ><h2><%= runk %>위　<%= ranking.other_books %>페지</h2>
+            </div>
+            <div class="panel-body">
+              <div style="font-size: 27px;">
+              <a href="<%= ranking.user.image.url %>" data-lightbox="任意の名前" data-title="<%= ranking.user.nickname %>">
+                <%= image_tag ranking.user.image.url, :size => '60x60' %>　</a>
+                <%= ranking.user.nickname %>(<%= ranking.user.group_id %>분조)
+               </div>
+              <% runk = runk + 1 %>
+            </div>
+      </div>
+   </div>
+<% end %>
+</div>
+
+    <div id="services" class="col-lg-12">
+            <h1 class="page-header">
+                자학습시간(<%= Date.today - 1%>)
+            </h1>
+    </div>
+
+    <div class="col-md-12">
+      <%= bar_chart @study_time_stats_yesterday, height: "500px" %>
+    </div>
+
+
+    <div id="services" class="col-lg-12">
+            <h1 class="page-header">
+                로작독서통계
+            </h1>
+    </div>
+
+    <div class="col-md-12">
+      <%= bar_chart @korean_books_stats, height: "500px" %>
+    </div>
+
+
+    <div id="services" class="col-lg-12">
+            <h1 class="page-header">
+                일반서적독서통계
+            </h1>
+    </div>
+
+    <div class="col-md-12">
+      <%= bar_chart @other_books_stats, height: "500px" %>
+    </div>
+
+
+
+</div>

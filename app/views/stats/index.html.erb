@@ -1,0 +1,176 @@
+<div class="row" style="margin-left: 2%; margin-right: 2%;">
+
+
+    <div id="services" class="col-lg-12">
+            <h1 class="page-header">
+                전체통계
+            </h1>
+    </div>
+
+
+</div>
+
+<div class ="row" style="margin-left: 2%; margin-right: 2%;">
+
+  <div class="col-md-12" >
+
+        <!-- Nav tabs -->
+      <ul class="nav nav-tabs " role="tablist" style = "font-size: 15px;font-weight: bold;">
+        <li role="presentation" class="active"><a href="#today" aria-controls="today" role="tab" data-toggle="tab">오늘</a></li>
+        <li role="presentation"><a href="#yesterday" aria-controls="yesterday" role="tab" data-toggle="tab">어제</a></li>
+      </ul>
+
+      <div class="tab-content">
+
+
+        <div role="tabpanel" class="tab-pane fade in active " id="today">
+
+      <div class="panel panel-danger" style ="margin-bottom: 0px;">
+       <div class="panel-heading">
+          <h3 class="panel-title" style="color: #FF0000;">통계를 올리지 못한 사람</h3>
+       </div>
+       <div class="panel-body" style ="font-weight: bold;">
+
+      <% all_user = [] %>
+      <% @users.each do |user| %>
+      <% all_user << user.nickname %>
+      <% end %>
+
+      <% submited_user = [] %>
+      <% @stats_today.each do |stat| %>
+      <% submited_user << stat.user.nickname %>
+      <% end %>
+
+      <% un_submited_users = all_user - submited_user %>
+      <% un_submited_users.each do |user| %>
+      <%= user %>　
+      <% end %>
+
+       </div>
+     </div>
+
+     <h2>개인</h2>
+
+            <table class="table table-striped" style="text-align: center;">
+                 <tr style="font-size: 13px; text-align: center;"><th></th><th>분조</th><th>이름</th><th>우리 말</th><th>자학습</th><th>로작</th><th>일반</th><th>아침점검</th><th>저녁점검</th><th>아침모임</th><th>출석</th><th>정치학습</th><th>우리 말 학습</th><th>하루총화</th><th>학내청소</th><th>호실청소</th></tr>
+                 <% @stats_today.each do |stat| %>
+                 <tr><td><a href="<%= stat.user.image.url %>" data-lightbox="任意の名前" data-title="<%= stat.user.nickname %>">
+<%= image_tag stat.user.image.url, :size => '30x30' %></a></td>
+<th><%= stat.user.year %>-<%= stat.user.group_id %></th><th><%= stat.user.nickname %></th><td><%= stat.used_korean %></td><td><%= stat.study_time %></td><td><%= stat.korean_books %></td><td><%= stat.other_books %></td><td><%= stat.roll_calling %></td><td><%= stat.night_roll_calling %></td><td><%= stat.morning_meeting %></td><td><%= stat.attendance %></td><td><%= stat.politic_learning %></td><td><%= stat.korean_learning %></td><td><%= stat.reviewing %></td><td><%= stat.campus_cleaning %></td><td><%= stat.room_cleaning %></td></tr>
+
+
+
+                 <% end %>
+            </table>
+
+                  <h2>분조(평군)</h2>
+
+                        <table class="table table-striped" style="text-align: center;">
+
+
+                 <tr style="font-size: 13px"><th></th><% @t_stats.each do |z| %><th style ="text-align: center;"><%= z.user.year %>-<%= z.user.group_id %></th><% end %></tr>
+
+
+                 <tr><th>우리 말</th><% @used_korean_t.each do |a| %><td><%= a %>％</td><% end %></tr>
+                 <tr><th>자학습</th><% @study_time_t.each do |b| %><td><%= b %></td><% end %></tr>
+                 <tr><th>로작</th><% @korean_books_t.each do |c| %><td><%= c %></td><% end %></tr>
+                 <tr><th>일반</th><% @other_books_t.each do |d| %><td><%= d%></td><% end %></tr>
+                 <tr><th>아침점검</th><% @roll_calling_t.each do |e| %><td><%= e %>％</td><% end %></tr>
+                 <tr><th>저녁점검</th><% @night_roll_calling_t.each do |f| %><td><%= f %>％</td><% end %></tr>
+                 <tr><th>아침모임</th><% @morning_meeting_t.each do |g| %><td><%= g %>％</td><% end %></tr>
+                 <tr><th>출석</th><%@attendance_t.each do |h| %><td><%= h %>％</td><% end %></tr>
+                 <tr><th>정치학습</th><% @politic_learning_t.each do |i| %><td><%= i %>％</td><% end %></tr>
+                 <tr><th>우리 말 학습</th><% @korean_learning_t.each do |j| %><td><%= j %>％</td><% end %></tr>
+                 <tr><th>하루총화</th><% @reviewing_t.each do |k| %><td><%= k %>％</td><% end %></tr>
+                 <tr><th>학내청소</th><% @campus_cleaning_t.each do |l| %><td><%= l %>％</td><% end %></tr>
+                 <tr><th>호실청소</th><% @room_cleaning_t.each do |m| %><td><%= m %>％</td><% end %></tr>
+
+            </table>
+
+
+
+
+      <div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
+      <% @stats_today.each do |stat| %>
+
+      <div class="modal-dialog modal-sm" role="document">
+      <div class="modal-content">
+      <%= image_tag stat.user.image.url, :size => '30x30' %>
+      <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+      </div>
+      </div>
+      <% end %>
+
+      </div>
+
+        </div>
+
+        <div role="tabpanel" class="tab-pane fade" id="yesterday">
+
+      <div class="panel panel-danger" style ="margin-bottom: 0px;">
+       <div class="panel-heading">
+          <h3 class="panel-title" style="color: #FF0000;"> 통계를 올리지 못한 사람</h3>
+       </div>
+       <div class="panel-body" style ="font-weight: bold; color: #FF8C00;">
+
+      <% all_user = [] %>
+      <% @users.each do |user| %>
+      <% all_user << user.nickname %>
+      <% end %>
+
+      <% submited_user = [] %>
+      <% @stats_yesterday.each do |stat| %>
+      <% submited_user << stat.user.nickname %>
+      <% end %>
+
+      <% un_submited_users = all_user - submited_user %>
+      <% un_submited_users.each do |user| %>
+      <%= user %>　
+      <% end %>
+
+       </div>
+     </div>
+
+     <h2>개인</h2>
+
+        <table class="table table-striped" style="text-align: center;">
+                 <tr style="font-size: 13px"><th></th><th>분조</th><th>이름</th><th>우리 말</th><th>자학습</th><th>로작</th><th>일반</th><th>아침점검</th><th>저녁점검</th><th>아침모임</th><th>출석</th><th>정치학습</th><th>우리 말 학습</th><th>하루총화</th><th>학내청소</th><th>호실청소</th></tr>
+                 <% @stats_yesterday.each do |stat| %>
+                 <tr><td><a href="<%= stat.user.image.url %>" data-lightbox="image" data-title="<%= stat.user.nickname %>">
+<%= image_tag stat.user.image.url, :size => '30x30' %></a></td>
+<th><%= stat.user.year %>-<%= stat.user.group_id %></th><th><%= stat.user.nickname %></th><td><%= stat.used_korean %></td><td><%= stat.study_time %></td><td><%= stat.korean_books %></td><td><%= stat.other_books %></td><td><%= stat.roll_calling %></td><td><%= stat.night_roll_calling %></td><td><%= stat.morning_meeting %></td><td><%= stat.attendance %></td><td><%= stat.politic_learning %></td><td><%= stat.korean_learning %></td><td><%= stat.reviewing %></td><td><%= stat.campus_cleaning %></td><td><%= stat.room_cleaning %></td></tr>
+                 <% end %>
+            </table>
+
+                        <h2>분조(평군)</h2>
+
+                        <table class="table table-striped" style="text-align: center;">
+
+
+                 <tr style="font-size: 13px"><th></th><% @y_stats.each do |z| %><th style ="text-align: center;"><%= z.user.year %>-<%= z.user.group_id %></th><% end %></tr>
+
+
+                 <tr><th>우리 말</th><% @used_korean_y.each do |a| %><td><%= a %>％</td><% end %></tr>
+                 <tr><th>자학습</th><% @study_time_y.each do |b| %><td><%= b %></td><% end %></tr>
+                 <tr><th>로작</th><% @korean_books_y.each do |c| %><td><%= c %></td><% end %></tr>
+                 <tr><th>일반</th><% @other_books_y.each do |d| %><td><%= d%></td><% end %></tr>
+                 <tr><th>아침점검</th><% @roll_calling_y.each do |e| %><td><%= e %>％</td><% end %></tr>
+                 <tr><th>저녁점검</th><% @night_roll_calling_y.each do |f| %><td><%= f %>％</td><% end %></tr>
+                 <tr><th>아침모임</th><% @morning_meeting_y.each do |g| %><td><%= g %>％</td><% end %></tr>
+                 <tr><th>출석</th><%@attendance_y.each do |h| %><td><%= h %>％</td><% end %></tr>
+                 <tr><th>정치학습</th><% @politic_learning_y.each do |i| %><td><%= i %>％</td><% end %></tr>
+                 <tr><th>우리 말 학습</th><% @korean_learning_y.each do |j| %><td><%= j %>％</td><% end %></tr>
+                 <tr><th>하루총화</th><% @reviewing_y.each do |k| %><td><%= k %>％</td><% end %></tr>
+                 <tr><th>학내청소</th><% @campus_cleaning_y.each do |l| %><td><%= l %>％</td><% end %></tr>
+                 <tr><th>호실청소</th><% @room_cleaning_y.each do |m| %><td><%= m %>％</td><% end %></tr>
+
+            </table>
+
+
+
+
+        </div>
+     </div>
+
+  </div>
+</div>

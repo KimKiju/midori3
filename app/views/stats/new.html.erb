@@ -1,0 +1,169 @@
+<!-- Contact Form -->
+    <!-- In order to set the email address and subject line for the contact form go to the bin/contact_me.php file. -->
+    <div class="row" style=" margin-left: 2%; margin-right: 2%;">
+    <div id="services" class="col-lg-12">
+            <h1 class="page-header">
+                통계제출
+            </h1>
+        </div>
+
+        <div id="contact-form" class="col-md-12 well" style="margin-top: 30px; background-color: #F0FFF0;">
+            <h3 class="text-center" style="margin-bottom: 30px;">통계</h3>
+            <%= form_tag(:action => "create") do %>
+
+
+            <form name="sentMessage">
+
+                   <div class="col-md-6">
+
+                   <div class="control-group form-group">
+                        <div class="controls">
+                            <label>날자</label>
+                            <input type="date" name="date" value="<%= Date.today %>" class="form-control"  required="" data-validation-required-message="Please enter your date.">
+                            <p class="help-block"></p>
+                        </div>
+                    </div>
+
+                   <div class="control-group form-group">
+                        <div class="controls">
+                            <label>우리 말</label>
+                            <select name="used_korean" class="form-control"  required="" data-validation-required-message="Please enter your stat.">
+                            <option value="ㄱ">ㄱ</option>
+                            <option value="ㄴ">ㄴ</option>
+                            <option value="ㄷ">ㄷ</option>
+                            <option value="ㄹ">ㄹ</option>
+                            </select>
+                            <p class="help-block"></p>
+                        </div>
+                    </div>
+
+                    <div class="control-group form-group">
+                        <div class="controls">
+                            <label>자학습</label>
+                            <input type="number" name="study_time" value="180" class="form-control"  required="" data-validation-required-message="Please enter your stat.">
+                            <p class="help-block"></p>
+                        </div>
+                    </div>
+                    <div class="control-group form-group">
+                        <div class="controls">
+                            <label>독서(로작)</label>
+                            <input type="number" name="korean_books" value="1" class="form-control"  required="" data-validation-required-message="Please enter your stat.">
+                            <p class="help-block"></p>
+                        </div>
+                    </div>
+                    <div class="control-group form-group">
+                        <div class="controls">
+                            <label>독서(일반서적)</label>
+                            <input type="number" name="other_books" value="1" class="form-control"  required="" data-validation-required-message="Please enter your stat.">
+                            <p class="help-block"></p>
+                        </div>
+                    </div>
+                    <div class="control-group form-group">
+                        <div class="controls">
+                            <label>아침점검</label>
+                            <select name="night_roll_calling" class="form-control" required="" data-validation-required-message="Please enter your stat.">
+                            <option value="◯">◯</option>
+                            <option value="＿">＿</option>
+                            <option value="X">X</option>
+                            </select>
+                        <div class="help-block"></div>
+                        </div>
+                    </div>
+                    <div class="control-group form-group">
+                        <div class="controls">
+                            <label>저녁점검</label>
+                            <select name="roll_calling" class="form-control" required="" data-validation-required-message="Please enter your stat.">
+                            <option value="◯">◯</option>
+                            <option value="＿">＿</option>
+                            <option value="X">X</option>
+                            </select>
+                        <div class="help-block"></div>
+                        </div>
+                    </div>
+
+
+                </div>
+                <div class="col-md-6">
+
+                  <div class="control-group form-group">
+                        <div class="controls">
+                            <label>아침모임</label>
+                            <select name="morning_meeting" class="form-control" required="" data-validation-required-message="Please enter your stat." style="width: 100%;">
+                            <option value="◯">◯</option>
+                            <option value="＿">＿</option>
+                            <option value="X">X</option>
+                            </select>
+                        <div class="help-block"></div></div>
+                    </div>
+
+                    <div class="control-group form-group">
+                        <div class="controls">
+                            <label>수업출석</label>
+                            <select name="attendance" class="form-control" required="" data-validation-required-message="Please enter your stat." style="width: 100%;"><option value="◯">◯</option>
+                            <option value="＿">＿</option>
+                            <option value="X">X</option>
+                            </select>
+                        <div class="help-block"></div></div>
+                    </div>
+
+                    <div class="control-group form-group">
+                        <div class="controls">
+                            <label>정치학습</label>
+                            <select name="politic_learning" class="form-control" required="" data-validation-required-message="Please enter your stat." style="width: 100%;"><option value="◯">◯</option>
+                            <option value="＿">＿</option>
+                            <option value="X">X</option>
+                            </select>
+                        <div class="help-block"></div></div>
+                    </div>
+                    <div class="control-group form-group">
+                        <div class="controls">
+                            <label>우리 말 학습</label>
+                            <select type="text" name="korean_learning" class="form-control"  required="" data-validation-required-message="Please enter your stat.">
+                            <option value="◯">◯</option>
+                            <option value="＿">＿</option>
+                            <option value="X">X</option>
+                            </select>
+                            <p class="help-block"></p>
+                        </div>
+                    </div>
+                    <div class="control-group form-group">
+                        <div class="controls">
+                            <label>하루총화</label>
+                            <select name="reviewing" class="form-control" required="" data-validation-required-message="Please enter your stat." style="width: 100%;">
+                            <option value="◯">◯</option>
+                            <option value="＿">＿</option>
+                            <option value="X">X</option>
+                            </select>
+                        <div class="help-block"></div></div>
+                    </div>
+                    <div class="control-group form-group">
+                        <div class="controls">
+                            <label>아침청소</label>
+                            <select name="campus_cleaning" class="form-control" required="" data-validation-required-message="Please enter your stat." style="width: 100%;"><option value="◯">◯</option>
+                            <option value="＿">＿</option>
+                            <option value="X">X</option>
+                            </select>
+                        <div class="help-block"></div></div>
+                    </div>
+                    <div class="control-group form-group">
+                        <div class="controls">
+                            <label>호실청소</label>
+                            <select name="room_cleaning" class="form-control" required="" data-validation-required-message="Please enter your stat." style="width: 100%;"><option value="◯">◯</option>
+                            <option value="＿">＿</option>
+                            <option value="X">X</option>
+                            </select>
+                        <div class="help-block"></div></div>
+                    </div>
+
+                </div>
+                <div id="success"></div>
+                <!-- For success/fail messages -->
+                <div class="text-center">
+                    <button type="submit" class="btn btn-lg btn-success" style="margin-top: 30px; width: 30%;">제출</button>
+                </div>
+            </form>
+          <% end %>
+        </div>
+
+    </div>
+    <!-- /.row -->

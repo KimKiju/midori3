@@ -1,0 +1,55 @@
+    <div class="row" style=" margin-left: 2%; margin-right: 2%;">
+      <div id="services" class="col-lg-12">
+            <h1 class="page-header">
+                등록정보 변경 삭제
+            </h1>
+        </div>
+        <div id="contact-form" class="col-md-12 well" style="margin-top: 30px; text-align: center;">
+                    <h3 class="text-center" style="margin-bottom: 30px;">등록정보 변경</h3>
+
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+  <%= devise_error_messages! %>
+
+  <div class="field">
+    <%= f.label :아드레스 %><br />
+    <%= f.email_field :email, autofocus: true %>
+  </div>
+
+  <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+    <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :파스워드 %> <br />
+    <%= f.password_field :current_password, autocomplete: "off" %>
+  </div>
+
+    <div class="field">
+    <%= f.label :학년 %><br />
+    <%= f.number_field :year, autofocus: true %>
+  </div>
+
+
+  <div class="field">
+    <%= f.label :분조 %><br />
+    <%= f.number_field :group_id, autofocus: true %>
+  </div>
+
+  <div class="field">
+    <%= f.label :사진 %><br />
+    <%= f.file_field :image, autofocus: true ,:style => "margin: 0 auto;"%>
+  </div><br />
+
+  <div class="actions">
+    <%= f.submit "Update" %>
+  </div><br><br><br>
+<% end %>
+
+<h3>아카운트 삭제</h3>
+
+<p>(모든 정보가 없어집니다.) <%= button_to "Delete my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
+
+<%= link_to "Back", :back %>
+
+</div>
+</div>

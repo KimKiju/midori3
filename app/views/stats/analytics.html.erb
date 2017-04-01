@@ -18,7 +18,7 @@
             <div class="panel-heading"><h2><%= runk %>위　<%= ranking.korean_books %>페지</h2>
             </div>
             <div class="panel-body">
-              <div style="font-size: 27px;">
+              <div style="font-size: 24px;">
               <a href="<%= ranking.user.image.url %>" data-lightbox="任意の名前" data-title="<%= ranking.user.nickname %>">
                 <%= image_tag ranking.user.image.url, :size => '60x60' %></a>　
                 <%= ranking.user.nickname %>(<%= ranking.user.group_id %>분조)
@@ -42,7 +42,7 @@
             <div class="panel-heading" ><h2><%= runk %>위　<%= ranking.other_books %>페지</h2>
             </div>
             <div class="panel-body">
-              <div style="font-size: 27px;">
+              <div style="font-size: 24px;">
               <a href="<%= ranking.user.image.url %>" data-lightbox="任意の名前" data-title="<%= ranking.user.nickname %>">
                 <%= image_tag ranking.user.image.url, :size => '60x60' %>　</a>
                 <%= ranking.user.nickname %>(<%= ranking.user.group_id %>분조)
@@ -62,7 +62,7 @@
     </div>
 
     <div class="col-md-12">
-      <%= bar_chart @study_time_stats_yesterday, height: "800px" %>
+      <%= bar_chart @study_time_stats_yesterday, height: "1000px" %>
     </div>
 
 
@@ -73,7 +73,7 @@
     </div>
 
     <div class="col-md-12">
-      <%= bar_chart @korean_books_stats, height: "800px" %>
+      <%= bar_chart @korean_books_stats, height: "1000px" %>
     </div>
 
 
@@ -84,7 +84,7 @@
     </div>
 
     <div class="col-md-12">
-      <%= bar_chart @other_books_stats, height: "800px" %>
+      <%= bar_chart @other_books_stats, height: "1000px" %>
     </div>
 
 

@@ -44,8 +44,8 @@ class StatsController < ApplicationController
 
       @used_korean_t = []
       stats_ave_today.each do |ave|
-        all_count = Stat.where(group_num: ave.group_num).select(:used_korean).count
-        good_count = Stat.where(group_num: ave.group_num).where(used_korean: "ㄱ").select(:used_korean).count
+        all_count = Stat.where(date: d).where(group_num: ave.group_num).select(:used_korean).count
+        good_count = Stat.where(date: d).where(group_num: ave.group_num).where(used_korean: "ㄱ").select(:used_korean).count
         if all_count == 0
         percent = 100
         else
@@ -189,8 +189,8 @@ class StatsController < ApplicationController
 
       @used_korean_y = []
       stats_ave_yesterday.each do |ave|
-        all_count = Stat.where(group_num: ave.group_num).select(:used_korean).count
-        good_count = Stat.where(group_num: ave.group_num).where(used_korean: "ㄱ").select(:used_korean).count
+        all_count = Stat.where(date: d - 1).where(group_num: ave.group_num).select(:used_korean).count
+        good_count = Stat.where(date: d - 1).where(group_num: ave.group_num).where(used_korean: "ㄱ").select(:used_korean).count
                 if all_count == 0
         percent = 100
         else

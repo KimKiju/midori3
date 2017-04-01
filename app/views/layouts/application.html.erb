@@ -7,9 +7,8 @@
   <%= javascript_include_tag 'application'%>
   <%= javascript_include_tag "//www.google.com/jsapi", "chartkick" %>
   <%= javascript_include_tag 'js/lightbox' %>
-  <%= favicon_link_tag('favicon.jpeg') %>
-  <%= favicon_link_tag('favicon.jpeg',
-                     {:rel => 'apple-touch-icon',
+  <%= favicon_link_tag() %>
+  <%= favicon_link_tag({:rel => 'apple-touch-icon',
                       :sizes => '180x180',
                       :type => 'image/jpeg'}) %>
 

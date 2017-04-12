@@ -13,7 +13,7 @@
 
   <div class="field">
     <%= f.label :아드레스 %><br />
-    <%= f.email_field :email, autofocus: true %>
+    <%= f.email_field :email, autofocus: true,style: "width: 25%;" %>
   </div>
 
   <div class="field">
@@ -21,30 +21,30 @@
     <% if @minimum_password_length %>
     <em>(<%= @minimum_password_length %> 글자이상)</em>
     <% end %><br />
-    <%= f.password_field :password, autocomplete: "off" %>
+    <%= f.password_field :password, autocomplete: "off",style: "width: 25%;" %>
   </div>
 
   <div class="field">
     <%= f.label :파스워드확인 %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "off" %>
+    <%= f.password_field :password_confirmation, autocomplete: "off",style: "width: 25%;"%>
   </div>
 
 
   <div class="field">
     <%= f.label :이름 %><br />
-    <%= f.text_field :nickname, autofocus: true %>
+    <%= f.text_field :nickname, autofocus: true,style: "width: 25%;" %>
   </div>
 
 
   <div class="field">
     <%= f.label :학년 %><br />
-    <%= f.number_field :year, autofocus: true %>
+    <%= f.number_field :year, autofocus: true, min: "1", max: "4",style: "width: 25%;" %>
   </div>
 
 
   <div class="field">
     <%= f.label :분조 %><br />
-    <%= f.number_field :group_id, autofocus: true %>
+    <%= f.number_field :group_id, autofocus: true, min: "1", max: "9",style: "width: 25%;" %>
   </div>
 
   <div class="field">
@@ -53,7 +53,7 @@
   </div><br />
 
   <div class="actions">
-    <%= f.submit "신기등록" %>
+    <%= f.submit "신기등록",style: "width: 15%; background-color: #6495ED" %>
   </div>
 <% end %>
 

@@ -16,8 +16,8 @@
 
         <!-- Nav tabs -->
       <ul class="nav nav-tabs " role="tablist" style = "font-size: 15px;font-weight: bold;">
-        <li role="presentation" class="active"><a href="#today" aria-controls="today" role="tab" data-toggle="tab">오늘</a></li>
-        <li role="presentation"><a href="#yesterday" aria-controls="yesterday" role="tab" data-toggle="tab">어제</a></li>
+        <li role="presentation" class="active" style="width: 50%;"><a href="#today" aria-controls="today" role="tab" data-toggle="tab">오늘</a></li>
+        <li role="presentation" style="width: 50%;"><a href="#yesterday" aria-controls="yesterday" role="tab" data-toggle="tab">어제</a></li>
       </ul>
 
       <div class="tab-content">
@@ -65,10 +65,10 @@
 
                   <h2>분조(평군)</h2>
 
-                        <table class="table table-striped" style="text-align: center;">
+                <table class="table table-striped" style="text-align: center; font-size: 13px;">
 
 
-                 <tr style="font-size: 13px"><th></th><% @t_stats.each do |z| %><th style ="text-align: center;"><%= z.user.year %>-<%= z.user.group_id %></th><% end %></tr>
+                 <tr><th></th><% @t_stats.each do |z| %><th style ="text-align: center;"><%= z.user.year %>-<%= z.user.group_id %></th><% end %></tr>
 
 
                  <tr><th>우리 말</th><% @used_korean_t.each do |a| %><td><%= a %>％</td><% end %></tr>
@@ -144,10 +144,10 @@
 
                         <h2>분조(평군)</h2>
 
-                        <table class="table table-striped" style="text-align: center;">
+                        <table class="table table-striped" style="text-align: center; font-size: 13px">
 
 
-                 <tr style="font-size: 13px"><th></th><% @y_stats.each do |z| %><th style ="text-align: center;"><%= z.user.year %>-<%= z.user.group_id %></th><% end %></tr>
+                 <tr><th></th><% @y_stats.each do |z| %><th style ="text-align: center;"><%= z.user.year %>-<%= z.user.group_id %></th><% end %></tr>
 
 
                  <tr><th>우리 말</th><% @used_korean_y.each do |a| %><td><%= a %>％</td><% end %></tr>

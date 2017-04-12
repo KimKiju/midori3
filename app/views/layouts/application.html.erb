@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html style="height: 100%;">
 <head lang="ko">
   <title>Midori</title>
   <%= stylesheet_link_tag    'application', media: 'all' %>
@@ -15,7 +15,7 @@
 
   <%= csrf_meta_tags %>
 </head>
-<body>
+<body style="height: 100%;">
 <nav class="navbar navbar-default" style="height: 80px; background-color: #F0FFF0;">
   <div class="container-fluid">
     <div class="navbar-header">
@@ -34,8 +34,8 @@
     <li><%= link_to "전체통계", '/stats' %></li>
     <li><%= link_to "통계분석", '/stats/analytics' %></li>
     <li role="separator" class="divider"></li>
-    <li><%= link_to "로그아우트", '/users/sign_out',method: :delete %></li>
     <li><%= link_to "등록정보 변경 삭제", '/users/edit' %></li>
+    <li><%= link_to "로그아우트", '/users/sign_out',method: :delete %></li>
     <% else %>
     <li><%= link_to "로그인", '/users/sign_in' %></li>
     <% end %>
@@ -46,11 +46,9 @@
 
 <%= yield %>
 
-<nav class="navbar navbar-default" style ="background-color: #F0FFF0;">
-  <div class="container-fluid">
-    <p class="navbar-text" style="margin-left: 43.5%">©produced_by_kiju_at_3.2017</p>
-  </div>
-</nav>
+<footer style="bottom: 0; background-color: #F0FFF0; height: 50px; width: 100%; padding-top: 7px; text-align: center;">
+  <h5>©produced_by_kiju_at_3.2017</h5>
+</footer>
 
 </body>
 </html>

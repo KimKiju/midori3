@@ -30,7 +30,7 @@
   <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
     <% if user_signed_in? %>
     <li> <%= link_to "통계제출", '/stats/new' %></li>
-    <li> <a href="/users/<%= current_user.id %>">개인통계</a></li>
+    <li> <a href="/users/<%= current_user.id %>">자기통계</a></li>
     <li><%= link_to "전체통계", '/stats' %></li>
     <li><%= link_to "통계분석", '/stats/analytics' %></li>
     <li role="separator" class="divider"></li>

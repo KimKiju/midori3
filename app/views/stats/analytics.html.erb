@@ -21,7 +21,7 @@
               <div style="font-size: 24px;">
               <a href="<%= ranking.user.image.url %>" data-lightbox="任意の名前" data-title="<%= ranking.user.nickname %>">
                 <%= image_tag ranking.user.image.url, :size => '60x60' %></a>　
-                <%= ranking.user.nickname %>(<%= ranking.user.group_id %>분조)
+                <%= link_to "#{ranking.user.nickname}","/users/#{ranking.user.id}" %>(<%= ranking.user.group_id %>분조)
                </div>
               <% runk = runk + 1 %>
             </div>
@@ -46,7 +46,7 @@
               <div style="font-size: 24px;">
               <a href="<%= ranking.user.image.url %>" data-lightbox="任意の名前" data-title="<%= ranking.user.nickname %>">
                 <%= image_tag ranking.user.image.url, :size => '60x60' %></a>　
-                <%= ranking.user.nickname %>(<%= ranking.user.group_id %>분조)
+                <%= link_to "#{ranking.user.nickname}","/users/#{ranking.user.id}" %>(<%= ranking.user.group_id %>분조)
                </div>
               <% runk = runk + 1 %>
             </div>

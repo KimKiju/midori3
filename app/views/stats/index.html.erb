@@ -56,7 +56,7 @@
                  <% @stats_today.each do |stat| %>
                  <tr><td><a href="<%= stat.user.image.url %>" data-lightbox="任意の名前" data-title="<%= stat.user.nickname %>">
 <%= image_tag stat.user.image.url, :size => '30x30' %></a></td>
-<th><%= stat.user.year %>-<%= stat.user.group_id %></th><th><%= stat.user.nickname %></th><td><%= stat.used_korean %></td><td><%= stat.study_time %></td><td><%= stat.korean_books %></td><td><%= stat.other_books %></td><td><%= stat.roll_calling %></td><td><%= stat.night_roll_calling %></td><td><%= stat.morning_meeting %></td><td><%= stat.attendance %></td><td><%= stat.politic_learning %></td><td><%= stat.korean_learning %></td><td><%= stat.reviewing %></td><td><%= stat.campus_cleaning %></td><td><%= stat.room_cleaning %></td></tr>
+<th><%= stat.user.year %>-<%= stat.user.group_id %></th><th><%= link_to "#{stat.user.nickname}","/users/#{stat.user.id}" %></th><td><%= stat.used_korean %></td><td><%= stat.study_time %></td><td><%= stat.korean_books %></td><td><%= stat.other_books %></td><td><%= stat.roll_calling %></td><td><%= stat.night_roll_calling %></td><td><%= stat.morning_meeting %></td><td><%= stat.attendance %></td><td><%= stat.politic_learning %></td><td><%= stat.korean_learning %></td><td><%= stat.reviewing %></td><td><%= stat.campus_cleaning %></td><td><%= stat.room_cleaning %></td></tr>
 
 
 
@@ -138,7 +138,7 @@
                  <% @stats_yesterday.each do |stat| %>
                  <tr><td><a href="<%= stat.user.image.url %>" data-lightbox="image" data-title="<%= stat.user.nickname %>">
 <%= image_tag stat.user.image.url, :size => '30x30' %></a></td>
-<th><%= stat.user.year %>-<%= stat.user.group_id %></th><th><%= stat.user.nickname %></th><td><%= stat.used_korean %></td><td><%= stat.study_time %></td><td><%= stat.korean_books %></td><td><%= stat.other_books %></td><td><%= stat.roll_calling %></td><td><%= stat.night_roll_calling %></td><td><%= stat.morning_meeting %></td><td><%= stat.attendance %></td><td><%= stat.politic_learning %></td><td><%= stat.korean_learning %></td><td><%= stat.reviewing %></td><td><%= stat.campus_cleaning %></td><td><%= stat.room_cleaning %></td></tr>
+<th><%= stat.user.year %>-<%= stat.user.group_id %></th><th><%= link_to "#{stat.user.nickname}","/users/#{stat.user.id}" %></th><td><%= stat.used_korean %></td><td><%= stat.study_time %></td><td><%= stat.korean_books %></td><td><%= stat.other_books %></td><td><%= stat.roll_calling %></td><td><%= stat.night_roll_calling %></td><td><%= stat.morning_meeting %></td><td><%= stat.attendance %></td><td><%= stat.politic_learning %></td><td><%= stat.korean_learning %></td><td><%= stat.reviewing %></td><td><%= stat.campus_cleaning %></td><td><%= stat.room_cleaning %></td></tr>
                  <% end %>
             </table>
 

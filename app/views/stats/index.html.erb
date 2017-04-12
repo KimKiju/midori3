@@ -23,7 +23,7 @@
       <div class="tab-content">
 
 
-        <div role="tabpanel" class="tab-pane fade in active " id="today">
+        <div role="tabpanel" class="tab-pane fade in active " id="today" style="padding: 10px; border: 1px solid #DCDCDC; margin-bottom: 50px;" >
 
       <div class="panel panel-danger" style ="margin-bottom: 0px;">
        <div class="panel-heading">
@@ -65,7 +65,7 @@
 
                   <h2>분조(평군)</h2>
 
-                <table class="table table-striped" style="text-align: center; font-size: 13px;">
+                <table class="table table-striped" style="text-align: center; font-size: 10px;">
 
 
                  <tr><th></th><% @t_stats.each do |z| %><th style ="text-align: center;"><%= z.user.year %>-<%= z.user.group_id %></th><% end %></tr>
@@ -105,7 +105,7 @@
 
         </div>
 
-        <div role="tabpanel" class="tab-pane fade" id="yesterday">
+        <div role="tabpanel" class="tab-pane fade" id="yesterday" style="padding: 10px; border: 1px solid #DCDCDC; margin-bottom: 50px;">
 
       <div class="panel panel-danger" style ="margin-bottom: 0px;">
        <div class="panel-heading">
@@ -144,7 +144,7 @@
 
                         <h2>분조(평군)</h2>
 
-                        <table class="table table-striped" style="text-align: center; font-size: 13px">
+                        <table class="table table-striped" style="text-align: center; font-size: 10px">
 
 
                  <tr><th></th><% @y_stats.each do |z| %><th style ="text-align: center;"><%= z.user.year %>-<%= z.user.group_id %></th><% end %></tr>

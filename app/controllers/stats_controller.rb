@@ -317,9 +317,8 @@ class StatsController < ApplicationController
 
 
     d = Date.today
-    @study_time_stats = Stat.joins(:user).includes(:user).where(date: d).group("users.nickname").sum(:study_time)
-    @study_time_stats_yesterday = Stat.joins(:user).includes(:user).where(date: d - 1).group("users.nickname").sum(:study_time)
 
+    @study_time_ranking = Stat.joins(:user).includes(:user).where(date: d - 1).order("study_time DESC").limit(6)
     @korean_books_ranking = Stat.joins(:user).includes(:user).where(date: d - 1).order("korean_books DESC").limit(6)
     @other_books_ranking = Stat.joins(:user).includes(:user).where(date: d - 1).order("other_books DESC").limit(6)
   end

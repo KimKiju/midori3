@@ -19,7 +19,7 @@
                    <div class="control-group form-group">
                         <div class="controls">
                             <label>날자</label>
-                            <input type="date" name="date" value="<%= Date.today %>" class="form-control"  required="" data-validation-required-message="Please enter your date.">
+                            <input type="date" name="date" max="<%= Date.today %>" value="<%= Date.today %>" class="form-control"  required="" data-validation-required-message="Please enter your date.">
                             <p class="help-block"></p>
                         </div>
                     </div>
@@ -40,21 +40,21 @@
                     <div class="control-group form-group">
                         <div class="controls">
                             <label>자학습</label>
-                            <input type="number" name="study_time" value="180" class="form-control"  required="" data-validation-required-message="Please enter your stat.">
+                            <input type="number" name="study_time" min="0" value="180" class="form-control"  required="" data-validation-required-message="Please enter your stat.">
                             <p class="help-block"></p>
                         </div>
                     </div>
                     <div class="control-group form-group">
                         <div class="controls">
                             <label>독서(로작)</label>
-                            <input type="number" name="korean_books" value="1" class="form-control"  required="" data-validation-required-message="Please enter your stat.">
+                            <input type="number" name="korean_books" min="0" value="1" class="form-control"  required="" data-validation-required-message="Please enter your stat.">
                             <p class="help-block"></p>
                         </div>
                     </div>
                     <div class="control-group form-group">
                         <div class="controls">
                             <label>독서(일반서적)</label>
-                            <input type="number" name="other_books" value="1" class="form-control"  required="" data-validation-required-message="Please enter your stat.">
+                            <input type="number" name="other_books" min="0" value="1" class="form-control"  required="" data-validation-required-message="Please enter your stat.">
                             <p class="help-block"></p>
                         </div>
                     </div>

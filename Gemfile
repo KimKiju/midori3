@@ -50,6 +50,7 @@ gem 'devise'
 gem "chartkick"
 gem 'carrierwave'
 gem 'fog'
+gem 'google-analytics-rails'
 group :production do
   gem 'rails_12factor'
 end

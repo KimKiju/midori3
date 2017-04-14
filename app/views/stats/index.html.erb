@@ -51,7 +51,7 @@
 
      <h2>개인</h2>
 
-            <table class="table table-striped" style="text-align: center;" cellspacing="0">
+            <table class="table table-striped" style="text-align: center;">
                  <tr style="font-size: 12px; text-align: center;"><th></th><th>분조</th><th>이름</th><th>우리 말</th><th>자학습</th><th>로작</th><th>일반</th><th>아침점검</th><th>저녁점검</th><th>아침모임</th><th>출석</th><th>정치학습</th><th>우리 말 학습</th><th>하루총화</th><th>학내청소</th><th>호실청소</th></tr>
                  <% @stats_today.each do |stat| %>
                  <tr><td><a href="<%= stat.user.image.url %>" data-lightbox="任意の名前" data-title="<%= stat.user.nickname %>">
@@ -65,7 +65,7 @@
 
                   <h2>분조(평군)</h2>
 
-                <table class="table table-striped" style="text-align: center; font-size: 10px;">
+                <table class="table table-striped" style="text-align: center; font-size: 9px;">
 
 
                  <tr><th></th><% @t_stats.each do |z| %><th style ="text-align: center;"><%= z.user.year %>-<%= z.user.group_id %></th><% end %></tr>
@@ -144,7 +144,7 @@
 
                         <h2>분조(평군)</h2>
 
-                        <table class="table table-striped" style="text-align: center; font-size: 10px" cellspacing="0">
+                        <table class="table table-striped" style="text-align: center; font-size: 9px">
 
 
                  <tr><th></th><% @y_stats.each do |z| %><th style ="text-align: center;"><%= z.user.year %>-<%= z.user.group_id %></th><% end %></tr>

@@ -26,19 +26,19 @@ class StatsController < ApplicationController
       @study_time_t =[]
       stats_ave_today.each do |ave|
         ave = Stat.where(date: d).where(group_num: ave.group_num).select(:study_time).average(:study_time)
-      @study_time_t << ave
+      @study_time_t << ave.round(1)
       end
 
       @korean_books_t =[]
       stats_ave_today.each do |ave|
         ave = Stat.where(date: d).where(group_num: ave.group_num).select(:korean_books).average(:korean_books)
-      @korean_books_t << ave
+      @korean_books_t << ave.round(1)
       end
 
       @other_books_t =[]
       stats_ave_today.each do |ave|
         ave = Stat.where(date: d).where(group_num: ave.group_num).select(:other_books).average(:other_books)
-      @other_books_t << ave
+      @other_books_t << ave.round(1)
       end
 
 
@@ -171,19 +171,19 @@ class StatsController < ApplicationController
       @study_time_y =[]
       stats_ave_yesterday.each do |ave|
         ave = Stat.where(date: d - 1).where(group_num: ave.group_num).select(:study_time).average(:study_time)
-      @study_time_y << ave
+      @study_time_y << ave.round(1)
       end
 
       @korean_books_y =[]
       stats_ave_yesterday.each do |ave|
         ave = Stat.where(date: d - 1).where(group_num: ave.group_num).select(:korean_books).average(:korean_books)
-      @korean_books_y << ave
+      @korean_books_y << ave.round(1)
       end
 
       @other_books_y =[]
       stats_ave_yesterday.each do |ave|
         ave = Stat.where(date: d - 1).where(group_num: ave.group_num).select(:other_books).average(:other_books)
-      @other_books_y << ave
+      @other_books_y << ave.round(1)
       end
 
 

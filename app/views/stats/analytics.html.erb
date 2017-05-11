@@ -98,17 +98,7 @@
     </div>
 
     <div class="col-md-12">
-      <%= bar_chart @korean_books_stats, height: "2000px" %>
+      <%= bar_chart [ { name: "일반", data: @other_books_stats },{  name: "로작", data: @korean_books_stats  } ], height: "2700px" %>
     </div>
 
-
-    <div id="services" class="col-lg-12">
-            <h1 class="page-header">
-                일반서적독서통계
-            </h1>
-    </div>
-
-    <div class="col-md-12">
-      <%= bar_chart @other_books_stats, height: "2000px" %>
-    </div>
 </div>

@@ -49,6 +49,50 @@
        </div>
      </div>
 
+
+           <h2>지부(평균)</h2>
+           <div class ="chibu wrapper">
+
+      <div class="alert alert-success col-md-3 col-sm-3" role="alert" style =" text-align: center;margin-bottom: 3px;">우리말:　<strong><%= @chibu_uk_t %>%</strong></div>
+
+            <div class="alert alert-success col-md-3 col-sm-3" role="alert" style =" text-align: center;margin-bottom: 3px; ">
+              자학습시간 :　 <strong><%= @stats_today.average(:study_time).to_i %>분</strong>
+            </div>
+            <div class="alert alert-success col-md-3 col-sm-3" role="alert" style =" text-align: center;margin-bottom: 3px;">
+                 <% book1 = @stats_today.sum(:korean_books).to_i %>
+                 <% book2 = @stats_today.sum(:other_books).to_i %>
+                 <% if @stats_today.empty? %>
+                 <% book_ave = 0 %>
+                 <% else %>
+                 <% book_ave = (book1 + book2) / @stats_today.count.to_i %>
+                 <% end %>
+              독서페지: 　<strong><%= book_ave %>페지</strong>
+            </div>
+
+
+
+       <div class="alert alert-success col-md-3 col-sm-3" role="alert" style =" text-align: center;margin-bottom: 3px;">아침점검:　<strong><%= @chibu_mr_t %>%</strong></div>
+
+       <div class="alert alert-success col-md-3 col-sm-3" role="alert" style =" text-align: center;margin-bottom: 3px;">저녁점검:　<strong><%= @chibu_nr_t %>%</strong></div>
+
+       <div class="alert alert-success col-md-3 col-sm-3" role="alert" style =" text-align: center;margin-bottom: 3px;">아침모임:　<strong><%= @chibu_mm_t %>%</strong></div>
+
+       <div class="alert alert-success col-md-3 col-sm-3" role="alert" style =" text-align: center;margin-bottom: 3px;">출석:　<strong><%= @chibu_at_t %>%</strong></div>
+
+       <div class="alert alert-success col-md-3 col-sm-3" role="alert" style =" text-align: center;margin-bottom: 3px;">정치정세:　<strong><%= @chibu_pl_t %>%</strong></div>
+
+       <div class="alert alert-success col-md-3 col-sm-3" role="alert" style =" text-align: center;margin-bottom: 3px;">우리말 학습:　<strong><%= @chibu_kl_t %>%</strong></div>
+
+
+        <div class="alert alert-success col-md-3 col-sm-3" role="alert" style =" text-align: center;margin-bottom: 3px;">하루청화:　<strong><%= @chibu_re_t %>%</strong></div>
+
+       <div class="alert alert-success col-md-3 col-sm-3" role="alert" style =" text-align: center;margin-bottom: 3px;">학내청소:　<strong><%= @chibu_cc_t %>%</strong></div>
+
+      <div class="alert alert-success col-md-3 col-sm-3" role="alert" style =" text-align: center;margin-bottom: 3px;">호실청소:　<strong><%= @chibu_rc_t %>%</strong></div>
+      </div>
+
+
+
      <h2>개인</h2>
 
             <table class="table table-striped" style="text-align: center;">
@@ -130,6 +174,50 @@
 
        </div>
      </div>
+
+
+           <h2>지부(평균)</h2>
+           <div class ="chibu wrapper">
+
+      <div class="alert alert-success col-md-3 col-sm-3" role="alert" style =" text-align: center;margin-bottom: 3px;">우리말:　<strong><%= @chibu_uk_y %>%</strong></div>
+
+            <div class="alert alert-success col-md-3 col-sm-3" role="alert" style =" text-align: center;margin-bottom: 3px; ">
+              자학습시간 :　 <strong><%= @stats_yesterday.average(:study_time).to_i %>분</strong>
+            </div>
+            <div class="alert alert-success col-md-3 col-sm-3" role="alert" style =" text-align: center;margin-bottom: 3px;">
+                 <% book1 = @stats_yesterday.sum(:korean_books).to_i %>
+                 <% book2 = @stats_yesterday.sum(:other_books).to_i %>
+                 <% if @stats_yesterday.empty? %>
+                 <% book_ave = 0 %>
+                 <% else %>
+                 <% book_ave = (book1 + book2) / @stats_yesterday.count.to_i %>
+                 <% end %>
+              독서페지: 　<strong><%= book_ave %>페지</strong>
+            </div>
+
+
+
+       <div class="alert alert-success col-md-3 col-sm-3" role="alert" style =" text-align: center;margin-bottom: 3px;">아침점검:　<strong><%= @chibu_mr_y %>%</strong></div>
+
+       <div class="alert alert-success col-md-3 col-sm-3" role="alert" style =" text-align: center;margin-bottom: 3px;">저녁점검:　<strong><%= @chibu_nr_y %>%</strong></div>
+
+       <div class="alert alert-success col-md-3 col-sm-3" role="alert" style =" text-align: center;margin-bottom: 3px;">아침모임:　<strong><%= @chibu_mm_y %>%</strong></div>
+
+       <div class="alert alert-success col-md-3 col-sm-3" role="alert" style =" text-align: center;margin-bottom: 3px;">출석:　<strong><%= @chibu_at_y %>%</strong></div>
+
+       <div class="alert alert-success col-md-3 col-sm-3" role="alert" style =" text-align: center;margin-bottom: 3px;">정치정세:　<strong><%= @chibu_pl_y %>%</strong></div>
+
+       <div class="alert alert-success col-md-3 col-sm-3" role="alert" style =" text-align: center;margin-bottom: 3px;">우리말 학습:　<strong><%= @chibu_kl_y %>%</strong></div>
+
+
+        <div class="alert alert-success col-md-3 col-sm-3" role="alert" style =" text-align: center;margin-bottom: 3px;">하루청화:　<strong><%= @chibu_re_y %>%</strong></div>
+
+       <div class="alert alert-success col-md-3 col-sm-3" role="alert" style =" text-align: center;margin-bottom: 3px;">학내청소:　<strong><%= @chibu_cc_y %>%</strong></div>
+
+      <div class="alert alert-success col-md-3 col-sm-3" role="alert" style =" text-align: center;margin-bottom: 3px;">호실청소:　<strong><%= @chibu_rc_y %>%</strong></div>
+      </div>
+
+
 
      <h2>개인</h2>
 

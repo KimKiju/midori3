@@ -308,6 +308,174 @@ class StatsController < ApplicationController
       end
 
 
+     unless @stats_today.empty?
+     stats_count_t = @stats_today.count.to_i
+     chibu1 = @stats_today.select {|item| item.used_korean  == "ㄱ" || item.used_korean == "ㄴ"}.length
+     if chibu1 == 0
+     @chibu_uk_y = 0
+     else
+     @chibu_uk_t = chibu1 * 100 / stats_count_t
+     end
+
+     chibu2 = @stats_today.select {|item| item.korean_learning  == "◯" }.length
+     chibu2_a = @stats_today.select {|item| item.korean_learning  == "◯" || item.korean_learning == "X" }.length
+      if chibu2_a == 0
+     @chibu_kl_y = 100
+      else
+     @chibu_kl_t = chibu2 * 100 / chibu2_a
+      end
+
+     chibu3 = @stats_today.select {|item| item.roll_calling  == "◯" }.length
+     chibu3_a = @stats_today.select {|item| item.roll_calling  == "◯" || item.roll_calling == "X" }.length
+     if chibu3_a == 0
+     @chibu_kl_y = 100
+      else
+     @chibu_mr_t = chibu3 * 100 / chibu3_a
+     end
+
+     chibu4 = @stats_today.select {|item| item.night_roll_calling  == "◯" }.length
+     chibu4_a = @stats_today.select {|item| item.night_roll_calling  == "◯" || item.night_roll_calling == "X" }.length
+     if chibu4_a == 0
+     @chibu_kl_y = 100
+      else
+     @chibu_nr_t = chibu4 * 100 / chibu4_a
+     end
+
+     chibu5 = @stats_today.select {|item| item.morning_meeting  == "◯" }.length
+     chibu5_a = @stats_today.select {|item| item.morning_meeting  == "◯" || item.morning_meeting == "X" }.length
+     if chibu5_a == 0
+     @chibu_kl_y = 100
+      else
+     @chibu_mm_t = chibu5 * 100 / chibu5_a
+     end
+
+     chibu6 = @stats_today.select {|item| item.attendance  == "◯" }.length
+     chibu6_a = @stats_today.select {|item| item.attendance  == "◯" || item.attendance == "X" }.length
+     if chibu6_a == 0
+     @chibu_kl_y = 100
+      else
+     @chibu_at_t = chibu6 * 100 / chibu6_a
+     end
+
+     chibu7 = @stats_today.select {|item| item.politic_learning  == "◯" }.length
+     chibu7_a = @stats_today.select {|item| item.politic_learning  == "◯" || item.politic_learning == "X" }.length
+     if chibu7_a == 0
+     @chibu_kl_y = 100
+      else
+     @chibu_pl_t = chibu7 * 100 / chibu7_a
+     end
+
+     chibu8 = @stats_today.select {|item| item.reviewing  == "◯" }.length
+     chibu8_a = @stats_today.select {|item| item.reviewing  == "◯" || item.reviewing == "X" }.length
+     if chibu8_a == 0
+     @chibu_kl_y = 100
+      else
+     @chibu_re_t = chibu8 * 100 / chibu8_a
+     end
+
+     chibu9 = @stats_today.select {|item| item.campus_cleaning  == "◯" }.length
+     chibu9_a = @stats_today.select {|item| item.campus_cleaning  == "◯" || item.campus_cleaning == "X" }.length
+     if chibu9_a == 0
+     @chibu_kl_y = 100
+      else
+     @chibu_cc_t = chibu9 * 100 / chibu9_a
+     end
+
+     chibu10 = @stats_today.select {|item| item.room_cleaning  == "◯" }.length
+     chibu10_a = @stats_today.select {|item| item.room_cleaning  == "◯" || item.room_cleaning == "X" }.length
+     if chibu10_a == 0
+     @chibu_kl_y = 100
+      else
+     @chibu_rc_t = chibu10 * 100 / chibu10_a
+     end
+     end
+
+
+     unless @stats_yesterday.empty?
+     stats_count_t = @stats_yesterday.count.to_i
+     chibu1 = @stats_yesterday.select {|item| item.used_korean  == "ㄱ" || item.used_korean == "ㄴ"}.length
+     if chibu1 == 0
+     @chibu_uk_y = 0
+     else
+     @chibu_uk_y = chibu1 * 100 / stats_count_t
+     end
+
+     chibu2 = @stats_yesterday.select {|item| item.korean_learning  == "◯" }.length
+     chibu2_a = @stats_yesterday.select {|item| item.korean_learning  == "◯" || item.korean_learning == "X" }.length
+      if chibu2_a == 0
+     @chibu_kl_y = 100
+      else
+     @chibu_kl_y = chibu2 * 100 / chibu2_a
+      end
+
+     chibu3 = @stats_yesterday.select {|item| item.roll_calling  == "◯" }.length
+     chibu3_a = @stats_yesterday.select {|item| item.roll_calling  == "◯" || item.roll_calling == "X" }.length
+     if chibu3_a == 0
+     @chibu_mr_y = 100
+     else
+     @chibu_mr_y = chibu3 * 100 / chibu3_a
+     end
+
+
+     chibu4 = @stats_yesterday.select {|item| item.night_roll_calling  == "◯" }.length
+     chibu4_a = @stats_yesterday.select {|item| item.night_roll_calling  == "◯" || item.night_roll_calling == "X" }.length
+     if chibu4_a == 0
+     @chibu_nr_y = 100
+     else
+     @chibu_nr_y = chibu4 * 100 / chibu4_a
+     end
+
+     chibu5 = @stats_yesterday.select {|item| item.morning_meeting  == "◯" }.length
+     chibu5_a = @stats_yesterday.select {|item| item.morning_meeting  == "◯" || item.morning_meeting == "X" }.length
+     if chibu5_a == 0
+     @chibu_mm_y = 100
+     else
+     @chibu_mm_y = chibu5 * 100 / chibu5_a
+     end
+
+     chibu6 = @stats_yesterday.select {|item| item.attendance  == "◯" }.length
+     chibu6_a = @stats_yesterday.select {|item| item.attendance  == "◯" || item.attendance == "X" }.length
+    if chibu6_a == 0
+     @chibu_kl_y = 100
+     else
+     @chibu_at_y = chibu6 * 100 / chibu6_a
+     end
+
+     chibu7 = @stats_yesterday.select {|item| item.politic_learning  == "◯" }.length
+     chibu7_a = @stats_yesterday.select {|item| item.politic_learning  == "◯" || item.politic_learning == "X" }.length
+     if chibu7_a == 0
+     @chibu_pl_y = 100
+     else
+     @chibu_pl_y = chibu7 * 100 / chibu7_a
+     end
+
+     chibu8 = @stats_yesterday.select {|item| item.reviewing  == "◯" }.length
+     chibu8_a = @stats_yesterday.select {|item| item.reviewing  == "◯" || item.reviewing == "X" }.length
+     if chibu8_a == 0
+     @chibu_re_y = 100
+     else
+     @chibu_re_y = chibu8 * 100 / chibu8_a
+     end
+
+     chibu9 = @stats_yesterday.select {|item| item.campus_cleaning  == "◯" }.length
+     chibu9_a = @stats_yesterday.select {|item| item.campus_cleaning  == "◯" || item.campus_cleaning == "X" }.length
+     if chibu9_a == 0
+     @chibu_cc_y = 100
+     else
+     @chibu_cc_y = chibu9 * 100 / chibu9_a
+     end
+
+     chibu10 = @stats_yesterday.select {|item| item.room_cleaning  == "◯" }.length
+     chibu10_a = @stats_yesterday.select {|item| item.room_cleaning  == "◯" || item.room_cleaning == "X" }.length
+     if chibu10_a == 0
+     @chibu_rc_y = 100
+     else
+     @chibu_rc_y = chibu10 * 100 / chibu10_a
+     end
+     end
+
+
+
 
   end
 

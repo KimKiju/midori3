@@ -27,17 +27,19 @@
     MENU
     <span class="caret"></span>
   </button>
-  <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+   <ul class="dropdown-menu" aria-labelledby="dropdownMenu1" style = "width: 220px;">
     <% if user_signed_in? %>
-    <li> <%= link_to "통계제출", '/stats/new' %></li>
-    <li> <a href="/users/<%= current_user.id %>">자기통계</a></li>
-    <li><%= link_to "전체통계", '/stats' %></li>
-    <li><%= link_to "통계분석", '/stats/analytics' %></li>
+    <li style = "font-size: 22px;"> <%= link_to "통계제출", '/stats/new' %></li>
+    <li style = "font-size: 22px;"> <a href="/users/<%= current_user.id %>">자기통계</a></li>
+    <li style = "font-size: 22px;"><%= link_to "전체통계", '/stats' %></li>
+    <li style = "font-size: 22px;"><%= link_to "통계분석", '/stats/analytics' %></li>
     <li role="separator" class="divider"></li>
-    <li><%= link_to "등록정보 변경 삭제", '/users/edit' %></li>
-    <li><%= link_to "로그아우트", '/users/sign_out',method: :delete %></li>
+    <li style = "font-size: 22px;"><%= link_to "로그아우트", '/users/sign_out',method: :delete %></li>
     <% else %>
-    <li><%= link_to "로그인", '/users/sign_in' %></li>
+    <li style = "font-size: 22px;"><%= link_to "전체통계", '/stats' %></li>
+    <li style = "font-size: 22px;"><%= link_to "통계분석", '/stats/analytics' %></li>
+    <li role="separator" class="divider"></li>
+    <li style = "font-size: 22px;"><%= link_to "로그인", '/users/sign_in' %></li>
     <% end %>
   </ul>
 </div>

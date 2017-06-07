@@ -1,0 +1,235 @@
+  <div class ="row" style="margin-left: 2%; margin-right: 2%;">
+    <div id="services" class="col-lg-12">
+            <h1 class="page-header">
+                주간통계
+            </h1>
+        </div>
+    <div class ="col-md-6">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          조청조대위원회 제58기 년간운동（ <%= @before_manday %> ~ <%= @before_friday %> ）<br>
+          <h4 class ="text-center">정경학부지부 1반 정형보고서</h3>
+        </div>
+        <div class="panel-body">
+          <table class="table table-bordered">
+            <tr style ="background-color: #EEEEEE">
+              <th>아침점검</th>
+              <th>아침모임</th>
+              <th>저녁점검</th>
+              <th>하루청화</th>
+              <th>수업출석</th>
+              <th colspan="2">우리말</th>
+            </tr>
+            <tr>
+              <td><%= @pan_1_mr_t %>%</td>
+              <td><%= @pan_1_mm_t %>%</td>
+              <td><%= @pan_1_nr_t %>%</td>
+              <td><%= @pan_1_re_t %>%</td>
+              <td><%= @pan_1_at_t %>%</td>
+              <th>ㄱ수준</th>
+              <td><%= @pan_1_uk_t_k %>%</td>
+            </tr>
+            <tr>
+              <th></th>
+              <th></th>
+              <th></th>
+              <th></th>
+              <th></th>
+              <th>ㄴ수준</th>
+              <td><%= @pan_1_uk_t_n %>%</td>
+            </tr>
+            <tr style ="background-color: #EEEEEE">
+              <th>정치학습</th>
+              <th>로작</th>
+              <th>일반</th>
+              <th>분공청소</th>
+              <th>자학습</th>
+              <th style ="background-color: white">ㄷ수준</th>
+              <td style ="background-color: white"><%= @pan_1_uk_t_t %>%</td>
+            </tr>
+            <tr>
+              <td><%= @pan_1_pl_t %>%</td>
+              <td><%= @stats_weeks_1.average(:korean_books).to_i %>페지</td>
+              <td><%= @stats_weeks_1.average(:other_books).to_i %>페지</td>
+              <td><%= @pan_1_cc_t %>%</td>
+              <td><%= @stats_weeks_1.average(:study_time).to_i %>분</td>
+              <th>ㄹ수준</th>
+              <td><%= @pan_1_uk_t_r %>%</td>
+            </tr>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <div class ="col-md-6">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          조청조대위원회 제58기 년간운동（ <%= @before_manday %> ~ <%= @before_friday %> ）<br>
+          <h4 class ="text-center">정경학부지부 2반 정형보고서</h3>
+        </div>
+        <div class="panel-body">
+          <table class="table table-bordered">
+            <tr style ="background-color: #EEEEEE">
+              <th>아침점검</th>
+              <th>아침모임</th>
+              <th>저녁점검</th>
+              <th>하루청화</th>
+              <th>수업출석</th>
+              <th colspan="2">우리말</th>
+            </tr>
+            <tr>
+              <td><%= @pan_2_mr_t %>%</td>
+              <td><%= @pan_2_mm_t %>%</td>
+              <td><%= @pan_2_nr_t %>%</td>
+              <td><%= @pan_2_re_t %>%</td>
+              <td><%= @pan_2_at_t %>%</td>
+              <th>ㄱ수준</th>
+              <td><%= @pan_2_uk_t_k %>%</td>
+            </tr>
+            <tr>
+              <th></th>
+              <th></th>
+              <th></th>
+              <th></th>
+              <th></th>
+              <th>ㄴ수준</th>
+              <td><%= @pan_2_uk_t_n %>%</td>
+            </tr>
+            <tr style ="background-color: #EEEEEE">
+              <th>정치학습</th>
+              <th>로작</th>
+              <th>일반</th>
+              <th>분공청소</th>
+              <th>자학습</th>
+              <th style ="background-color: white">ㄷ수준</th>
+              <td style ="background-color: white"><%= @pan_2_uk_t_t %>%</td>
+            </tr>
+            <tr>
+              <td><%= @pan_2_pl_t %>%</td>
+              <td><%= @stats_weeks_2.average(:korean_books).to_i %>페지</td>
+              <td><%= @stats_weeks_2.average(:other_books).to_i %>페지</td>
+              <td><%= @pan_2_cc_t %>%</td>
+              <td><%= @stats_weeks_2.average(:study_time).to_i %>분</td>
+              <th>ㄹ수준</th>
+              <td><%= @pan_2_uk_t_r %>%</td>
+            </tr>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <div class ="col-md-6">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          조청조대위원회 제58기 년간운동（ <%= @before_manday %> ~ <%= @before_friday %> ）<br>
+          <h4 class ="text-center">정경학부지부 3반 정형보고서</h3>
+        </div>
+        <div class="panel-body">
+          <table class="table table-bordered">
+            <tr style ="background-color: #EEEEEE">
+              <th>아침점검</th>
+              <th>아침모임</th>
+              <th>저녁점검</th>
+              <th>하루청화</th>
+              <th>수업출석</th>
+              <th colspan="2">우리말</th>
+            </tr>
+            <tr>
+              <td><%= @pan_3_mr_t %>%</td>
+              <td><%= @pan_3_mm_t %>%</td>
+              <td><%= @pan_3_nr_t %>%</td>
+              <td><%= @pan_3_re_t %>%</td>
+              <td><%= @pan_3_at_t %>%</td>
+              <th>ㄱ수준</th>
+              <td><%= @pan_3_uk_t_k %>%</td>
+            </tr>
+            <tr>
+              <th></th>
+              <th></th>
+              <th></th>
+              <th></th>
+              <th></th>
+              <th>ㄴ수준</th>
+              <td><%= @pan_3_uk_t_n %>%</td>
+            </tr>
+            <tr style ="background-color: #EEEEEE">
+              <th>정치학습</th>
+              <th>로작</th>
+              <th>일반</th>
+              <th>분공청소</th>
+              <th>자학습</th>
+              <th style ="background-color: white">ㄷ수준</th>
+              <td style ="background-color: white"><%= @pan_3_uk_t_t %>%</td>
+            </tr>
+            <tr>
+              <td><%= @pan_3_pl_t %>%</td>
+              <td><%= @stats_weeks_3.average(:korean_books).to_i %>페지</td>
+              <td><%= @stats_weeks_3.average(:other_books).to_i %>페지</td>
+              <td><%= @pan_3_cc_t %>%</td>
+              <td><%= @stats_weeks_3.average(:study_time).to_i %>분</td>
+              <th>ㄹ수준</th>
+              <td><%= @pan_3_uk_t_r %>%</td>
+            </tr>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <div class ="col-md-6">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          조청조대위원회 제58기 년간운동（ <%= @before_manday %> ~ <%= @before_friday %> ）<br>
+          <h4 class ="text-center">정경학부지부 4반 정형보고서</h3>
+        </div>
+        <div class="panel-body">
+          <table class="table table-bordered">
+            <tr style ="background-color: #EEEEEE">
+              <th>아침점검</th>
+              <th>아침모임</th>
+              <th>저녁점검</th>
+              <th>하루청화</th>
+              <th>수업출석</th>
+              <th colspan="2">우리말</th>
+            </tr>
+            <tr>
+              <td><%= @pan_4_mr_t %>%</td>
+              <td><%= @pan_4_mm_t %>%</td>
+              <td><%= @pan_4_nr_t %>%</td>
+              <td><%= @pan_4_re_t %>%</td>
+              <td><%= @pan_4_at_t %>%</td>
+              <th>ㄱ수준</th>
+              <td><%= @pan_4_uk_t_k %>%</td>
+            </tr>
+            <tr>
+              <th></th>
+              <th></th>
+              <th></th>
+              <th></th>
+              <th></th>
+              <th>ㄴ수준</th>
+              <td><%= @pan_4_uk_t_n %>%</td>
+            </tr>
+            <tr style ="background-color: #EEEEEE">
+              <th>정치학습</th>
+              <th>로작</th>
+              <th>일반</th>
+              <th>분공청소</th>
+              <th>자학습</th>
+              <th style ="background-color: white">ㄷ수준</th>
+              <td style ="background-color: white"><%= @pan_4_uk_t_t %>%</td>
+            </tr>
+            <tr>
+              <td><%= @pan_4_pl_t %>%</td>
+              <td><%= @stats_weeks_4.average(:korean_books).to_i %>페지</td>
+              <td><%= @stats_weeks_4.average(:other_books).to_i %>페지</td>
+              <td><%= @pan_4_cc_t %>%</td>
+              <td><%= @stats_weeks_4.average(:study_time).to_i %>분</td>
+              <th>ㄹ수준</th>
+              <td><%= @pan_4_uk_t_r %>%</td>
+            </tr>
+          </table>
+        </div>
+      </div>
+    </div>
+
+  </div>

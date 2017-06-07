@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170316082214) do
+ActiveRecord::Schema.define(version: 20170607122053) do
 
   create_table "stats", force: :cascade do |t|
     t.date     "date"
@@ -32,6 +32,7 @@ ActiveRecord::Schema.define(version: 20170316082214) do
     t.datetime "updated_at"
     t.string   "night_roll_calling", limit: 255
     t.integer  "group_num",          limit: 4
+    t.integer  "year_num",           limit: 4
   end
 
   create_table "users", force: :cascade do |t|

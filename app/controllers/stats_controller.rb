@@ -6,7 +6,7 @@ class StatsController < ApplicationController
   end
 
   def create
-    Stat.create(date:create_params[:date],used_korean:create_params[:used_korean],korean_learning:create_params[:korean_learning],politic_learning:create_params[:politic_learning],roll_calling:create_params[:roll_calling],morning_meeting:create_params[:morning_meeting],attendance:create_params[:attendance],reviewing:create_params[:reviewing],study_time:create_params[:study_time],korean_books:create_params[:korean_books],other_books:create_params[:other_books],room_cleaning:create_params[:room_cleaning],campus_cleaning:create_params[:campus_cleaning],night_roll_calling:create_params[:night_roll_calling],group_num:current_user.year.to_s + current_user.group_id.to_s, user_id:current_user.id)
+    Stat.create(date:create_params[:date],used_korean:create_params[:used_korean],korean_learning:create_params[:korean_learning],politic_learning:create_params[:politic_learning],roll_calling:create_params[:roll_calling],morning_meeting:create_params[:morning_meeting],attendance:create_params[:attendance],reviewing:create_params[:reviewing],study_time:create_params[:study_time],korean_books:create_params[:korean_books],other_books:create_params[:other_books],room_cleaning:create_params[:room_cleaning],campus_cleaning:create_params[:campus_cleaning],night_roll_calling:create_params[:night_roll_calling],group_num:current_user.year.to_s + current_user.group_id.to_s, user_id:current_user.id,year_num:current_user.year.to_s)
 
     redirect_to :controller => "users", :action => "show", :id => current_user.id
   end
@@ -474,9 +474,6 @@ class StatsController < ApplicationController
      end
      end
 
-
-
-
   end
 
   def analytics
@@ -489,6 +486,349 @@ class StatsController < ApplicationController
     @study_time_ranking = Stat.joins(:user).includes(:user).where(date: d - 1).order("study_time DESC").limit(6)
     @korean_books_ranking = Stat.joins(:user).includes(:user).where(date: d - 1).order("korean_books DESC").limit(6)
     @other_books_ranking = Stat.joins(:user).includes(:user).where(date: d - 1).order("other_books DESC").limit(6)
+  end
+
+
+  def weeks
+     @before_manday = 0.days.ago.prev_week.strftime("%Y-%m-%d")
+     @before_friday = 0.days.ago.prev_week(:friday).strftime("%Y-%m-%d")
+     @stats_weeks_1 = Stat.where(date: @before_manday..@before_friday).where(year_num: 1)
+     @stats_weeks_2 = Stat.where(date: @before_manday..@before_friday).where(year_num: 2)
+     @stats_weeks_3 = Stat.where(date: @before_manday..@before_friday).where(year_num: 3)
+     @stats_weeks_4 = Stat.where(date: @before_manday..@before_friday).where(year_num: 4)
+
+     unless @stats_weeks_1.empty?
+     stats_count_t = @stats_weeks_1.count.to_i
+     pan_1_k = @stats_weeks_1.select {|item| item.used_korean  == "ㄱ"}.length
+     pan_1_n = @stats_weeks_1.select {|item| item.used_korean  == "ㄴ"}.length
+     pan_1_t = @stats_weeks_1.select {|item| item.used_korean  == "ㄷ"}.length
+     pan_1_r = @stats_weeks_1.select {|item| item.used_korean  == "ㄹ"}.length
+     if stats_count_t == 0
+     @pan_1_uk_t_k = 0
+     @pan_1_uk_t_n = 0
+     @pan_1_uk_t_t = 0
+     @pan_1_uk_t_r = 0
+     else
+     @pan_1_uk_t_k = pan_1_k * 100 / stats_count_t
+     @pan_1_uk_t_n = pan_1_n * 100 / stats_count_t
+     @pan_1_uk_t_t = pan_1_t * 100 / stats_count_t
+     @pan_1_uk_t_r = pan_1_r * 100 / stats_count_t
+     end
+
+     pan_3 = @stats_weeks_1.select {|item| item.roll_calling  == "◯" }.length
+     pan_3_a = @stats_weeks_1.select {|item| item.roll_calling  == "◯" || item.roll_calling == "X" }.length
+     if pan_3_a == 0
+     @pan_1_mr_t = 100
+      else
+     @pan_1_mr_t = pan_3 * 100 / pan_3_a
+     end
+
+     pan_4 = @stats_weeks_1.select {|item| item.night_roll_calling  == "◯" }.length
+     pan_4_a = @stats_weeks_1.select {|item| item.night_roll_calling  == "◯" || item.night_roll_calling == "X" }.length
+     if pan_4_a == 0
+     @pan_1_nr_t = 100
+      else
+     @pan_1_nr_t = pan_4 * 100 / pan_4_a
+     end
+
+     pan5 = @stats_weeks_1.select {|item| item.morning_meeting  == "◯" }.length
+     pan_5_a = @stats_weeks_1.select {|item| item.morning_meeting  == "◯" || item.morning_meeting == "X" }.length
+     if pan_5_a == 0
+     @pan_1_mm_t = 100
+      else
+     @pan_1_mm_t = pan5 * 100 / pan_5_a
+     end
+
+     pam_6 = @stats_weeks_1.select {|item| item.attendance  == "◯" }.length
+     pan_6_a = @stats_weeks_1.select {|item| item.attendance  == "◯" || item.attendance == "X" }.length
+     if pan_6_a == 0
+     @pan_1_at_t = 100
+      else
+     @pan_1_at_t = pam_6 * 100 / pan_6_a
+     end
+
+     pan7 = @stats_weeks_1.select {|item| item.politic_learning  == "◯" }.length
+     pan7_a = @stats_weeks_1.select {|item| item.politic_learning  == "◯" || item.politic_learning == "X" }.length
+     if pan7_a == 0
+     @pan_1_pl_t = 100
+      else
+     @pan_1_pl_t = pan7 * 100 / pan7_a
+     end
+
+     pan8 = @stats_weeks_1.select {|item| item.reviewing  == "◯" }.length
+     pan8_a = @stats_weeks_1.select {|item| item.reviewing  == "◯" || item.reviewing == "X" }.length
+     if pan8_a == 0
+     @pan_1_re_t = 100
+      else
+     @pan_1_re_t = pan8 * 100 / pan8_a
+     end
+
+     pan9 = @stats_weeks_1.select {|item| item.campus_cleaning  == "◯" }.length
+     pan9_a = @stats_weeks_1.select {|item| item.campus_cleaning  == "◯" || item.campus_cleaning == "X" }.length
+     if pan9_a == 0
+     @pan_1_cc_t = 100
+      else
+     @pan_1_cc_t = pan9 * 100 / pan9_a
+     end
+
+     pan10 = @stats_weeks_1.select {|item| item.room_cleaning  == "◯" }.length
+     pan10_a = @stats_weeks_1.select {|item| item.room_cleaning  == "◯" || item.room_cleaning == "X" }.length
+     if pan10_a == 0
+     @pan_1_rc_t = 100
+      else
+     @pan_1_rc_t = pan10 * 100 / pan10_a
+     end
+     end
+
+     unless @stats_weeks_2.empty?
+     stats_count_t = @stats_weeks_2.count.to_i
+     pan_2_k = @stats_weeks_2.select {|item| item.used_korean  == "ㄱ"}.length
+     pan_2_n = @stats_weeks_2.select {|item| item.used_korean  == "ㄴ"}.length
+     pan_2_t = @stats_weeks_2.select {|item| item.used_korean  == "ㄷ"}.length
+     pan_2_r = @stats_weeks_2.select {|item| item.used_korean  == "ㄹ"}.length
+     if stats_count_t == 0
+     @pan_2_uk_t_k = 0
+     @pan_2_uk_t_n = 0
+     @pan_2_uk_t_t = 0
+     @pan_2_uk_t_r = 0
+     else
+     @pan_2_uk_t_k = pan_2_k * 100 / stats_count_t
+     @pan_2_uk_t_n = pan_2_n * 100 / stats_count_t
+     @pan_2_uk_t_t = pan_2_t * 100 / stats_count_t
+     @pan_2_uk_t_r = pan_2_r * 100 / stats_count_t
+     end
+
+     pan_3 = @stats_weeks_2.select {|item| item.roll_calling  == "◯" }.length
+     pan_3_a = @stats_weeks_2.select {|item| item.roll_calling  == "◯" || item.roll_calling == "X" }.length
+     if pan_3_a == 0
+     @pan_2_mr_t = 100
+      else
+     @pan_2_mr_t = pan_3 * 100 / pan_3_a
+     end
+
+     pan_4 = @stats_weeks_2.select {|item| item.night_roll_calling  == "◯" }.length
+     pan_4_a = @stats_weeks_2.select {|item| item.night_roll_calling  == "◯" || item.night_roll_calling == "X" }.length
+     if pan_4_a == 0
+     @pan_2_nr_t = 100
+      else
+     @pan_2_nr_t = pan_4 * 100 / pan_4_a
+     end
+
+     pan5 = @stats_weeks_2.select {|item| item.morning_meeting  == "◯" }.length
+     pan_5_a = @stats_weeks_2.select {|item| item.morning_meeting  == "◯" || item.morning_meeting == "X" }.length
+     if pan_5_a == 0
+     @pan_2_mm_t = 100
+      else
+     @pan_2_mm_t = pan5 * 100 / pan_5_a
+     end
+
+     pam_6 = @stats_weeks_2.select {|item| item.attendance  == "◯" }.length
+     pan_6_a = @stats_weeks_2.select {|item| item.attendance  == "◯" || item.attendance == "X" }.length
+     if pan_6_a == 0
+     @pan_2_at_t = 100
+      else
+     @pan_2_at_t = pam_6 * 100 / pan_6_a
+     end
+
+     pan7 = @stats_weeks_2.select {|item| item.politic_learning  == "◯" }.length
+     pan7_a = @stats_weeks_2.select {|item| item.politic_learning  == "◯" || item.politic_learning == "X" }.length
+     if pan7_a == 0
+     @pan_2_pl_t = 100
+      else
+     @pan_2_pl_t = pan7 * 100 / pan7_a
+     end
+
+     pan8 = @stats_weeks_2.select {|item| item.reviewing  == "◯" }.length
+     pan8_a = @stats_weeks_2.select {|item| item.reviewing  == "◯" || item.reviewing == "X" }.length
+     if pan8_a == 0
+     @pan_2_re_t = 100
+      else
+     @pan_2_re_t = pan8 * 100 / pan8_a
+     end
+
+     pan9 = @stats_weeks_2.select {|item| item.campus_cleaning  == "◯" }.length
+     pan9_a = @stats_weeks_2.select {|item| item.campus_cleaning  == "◯" || item.campus_cleaning == "X" }.length
+     if pan9_a == 0
+     @pan_2_cc_t = 100
+      else
+     @pan_2_cc_t = pan9 * 100 / pan9_a
+     end
+
+     pan10 = @stats_weeks_2.select {|item| item.room_cleaning  == "◯" }.length
+     pan10_a = @stats_weeks_2.select {|item| item.room_cleaning  == "◯" || item.room_cleaning == "X" }.length
+     if pan10_a == 0
+     @pan_2_rc_t = 100
+      else
+     @pan_2_rc_t = pan10 * 100 / pan10_a
+     end
+     end
+
+     unless @stats_weeks_3.empty?
+     stats_count_t = @stats_weeks_3.count.to_i
+     pan_3_k = @stats_weeks_3.select {|item| item.used_korean  == "ㄱ"}.length
+     pan_3_n = @stats_weeks_3.select {|item| item.used_korean  == "ㄴ"}.length
+     pan_3_t = @stats_weeks_3.select {|item| item.used_korean  == "ㄷ"}.length
+     pan_3_r = @stats_weeks_3.select {|item| item.used_korean  == "ㄹ"}.length
+     if stats_count_t == 0
+     @pan_3_uk_t_k = 0
+     @pan_3_uk_t_n = 0
+     @pan_3_uk_t_t = 0
+     @pan_3_uk_t_r = 0
+     else
+     @pan_3_uk_t_k = pan_3_k * 100 / stats_count_t
+     @pan_3_uk_t_n = pan_3_n * 100 / stats_count_t
+     @pan_3_uk_t_t = pan_3_t * 100 / stats_count_t
+     @pan_3_uk_t_r = pan_3_r * 100 / stats_count_t
+     end
+
+     pan_3 = @stats_weeks_3.select {|item| item.roll_calling  == "◯" }.length
+     pan_3_a = @stats_weeks_3.select {|item| item.roll_calling  == "◯" || item.roll_calling == "X" }.length
+     if pan_3_a == 0
+     @pan_3_mr_t = 100
+      else
+     @pan_3_mr_t = pan_3 * 100 / pan_3_a
+     end
+
+     pan_4 = @stats_weeks_3.select {|item| item.night_roll_calling  == "◯" }.length
+     pan_4_a = @stats_weeks_3.select {|item| item.night_roll_calling  == "◯" || item.night_roll_calling == "X" }.length
+     if pan_4_a == 0
+     @pan_3_nr_t = 100
+      else
+     @pan_3_nr_t = pan_4 * 100 / pan_4_a
+     end
+
+     pan5 = @stats_weeks_3.select {|item| item.morning_meeting  == "◯" }.length
+     pan_5_a = @stats_weeks_3.select {|item| item.morning_meeting  == "◯" || item.morning_meeting == "X" }.length
+     if pan_5_a == 0
+     @pan_3_mm_t = 100
+      else
+     @pan_3_mm_t = pan5 * 100 / pan_5_a
+     end
+
+     pam_6 = @stats_weeks_3.select {|item| item.attendance  == "◯" }.length
+     pan_6_a = @stats_weeks_3.select {|item| item.attendance  == "◯" || item.attendance == "X" }.length
+     if pan_6_a == 0
+     @pan_3_at_t = 100
+      else
+     @pan_3_at_t = pam_6 * 100 / pan_6_a
+     end
+
+     pan7 = @stats_weeks_3.select {|item| item.politic_learning  == "◯" }.length
+     pan7_a = @stats_weeks_3.select {|item| item.politic_learning  == "◯" || item.politic_learning == "X" }.length
+     if pan7_a == 0
+     @pan_3_pl_t = 100
+      else
+     @pan_3_pl_t = pan7 * 100 / pan7_a
+     end
+
+     pan8 = @stats_weeks_3.select {|item| item.reviewing  == "◯" }.length
+     pan8_a = @stats_weeks_3.select {|item| item.reviewing  == "◯" || item.reviewing == "X" }.length
+     if pan8_a == 0
+     @pan_3_re_t = 100
+      else
+     @pan_3_re_t = pan8 * 100 / pan8_a
+     end
+
+     pan9 = @stats_weeks_3.select {|item| item.campus_cleaning  == "◯" }.length
+     pan9_a = @stats_weeks_3.select {|item| item.campus_cleaning  == "◯" || item.campus_cleaning == "X" }.length
+     if pan9_a == 0
+     @pan_3_cc_t = 100
+      else
+     @pan_3_cc_t = pan9 * 100 / pan9_a
+     end
+
+     pan10 = @stats_weeks_3.select {|item| item.room_cleaning  == "◯" }.length
+     pan10_a = @stats_weeks_3.select {|item| item.room_cleaning  == "◯" || item.room_cleaning == "X" }.length
+     if pan10_a == 0
+     @pan_3_rc_t = 100
+      else
+     @pan_3_rc_t = pan10 * 100 / pan10_a
+     end
+     end
+
+     unless @stats_weeks_4.empty?
+     stats_count_t = @stats_weeks_4.count.to_i
+     pan_4_k = @stats_weeks_4.select {|item| item.used_korean  == "ㄱ"}.length
+     pan_4_n = @stats_weeks_4.select {|item| item.used_korean  == "ㄴ"}.length
+     pan_4_t = @stats_weeks_4.select {|item| item.used_korean  == "ㄷ"}.length
+     pan_4_r = @stats_weeks_4.select {|item| item.used_korean  == "ㄹ"}.length
+     if stats_count_t == 0
+     @pan_4_uk_t_k = 0
+     @pan_4_uk_t_n = 0
+     @pan_4_uk_t_t = 0
+     @pan_4_uk_t_r = 0
+     else
+     @pan_4_uk_t_k = pan_4_k * 100 / stats_count_t
+     @pan_4_uk_t_n = pan_4_n * 100 / stats_count_t
+     @pan_4_uk_t_t = pan_4_t * 100 / stats_count_t
+     @pan_4_uk_t_r = pan_4_r * 100 / stats_count_t
+     end
+
+     pan_3 = @stats_weeks_4.select {|item| item.roll_calling  == "◯" }.length
+     pan_3_a = @stats_weeks_4.select {|item| item.roll_calling  == "◯" || item.roll_calling == "X" }.length
+     if pan_3_a == 0
+     @pan_4_mr_t = 100
+      else
+     @pan_4_mr_t = pan_3 * 100 / pan_3_a
+     end
+
+     pan_4 = @stats_weeks_4.select {|item| item.night_roll_calling  == "◯" }.length
+     pan_4_a = @stats_weeks_4.select {|item| item.night_roll_calling  == "◯" || item.night_roll_calling == "X" }.length
+     if pan_4_a == 0
+     @pan_4_nr_t = 100
+      else
+     @pan_4_nr_t = pan_4 * 100 / pan_4_a
+     end
+
+     pan5 = @stats_weeks_4.select {|item| item.morning_meeting  == "◯" }.length
+     pan_5_a = @stats_weeks_4.select {|item| item.morning_meeting  == "◯" || item.morning_meeting == "X" }.length
+     if pan_5_a == 0
+     @pan_4_mm_t = 100
+      else
+     @pan_4_mm_t = pan5 * 100 / pan_5_a
+     end
+
+     pam_6 = @stats_weeks_4.select {|item| item.attendance  == "◯" }.length
+     pan_6_a = @stats_weeks_4.select {|item| item.attendance  == "◯" || item.attendance == "X" }.length
+     if pan_6_a == 0
+     @pan_4_at_t = 100
+      else
+     @pan_4_at_t = pam_6 * 100 / pan_6_a
+     end
+
+     pan7 = @stats_weeks_4.select {|item| item.politic_learning  == "◯" }.length
+     pan7_a = @stats_weeks_4.select {|item| item.politic_learning  == "◯" || item.politic_learning == "X" }.length
+     if pan7_a == 0
+     @pan_4_pl_t = 100
+      else
+     @pan_4_pl_t = pan7 * 100 / pan7_a
+     end
+
+     pan8 = @stats_weeks_4.select {|item| item.reviewing  == "◯" }.length
+     pan8_a = @stats_weeks_4.select {|item| item.reviewing  == "◯" || item.reviewing == "X" }.length
+     if pan8_a == 0
+     @pan_4_re_t = 100
+      else
+     @pan_4_re_t = pan8 * 100 / pan8_a
+     end
+
+     pan9 = @stats_weeks_4.select {|item| item.campus_cleaning  == "◯" }.length
+     pan9_a = @stats_weeks_4.select {|item| item.campus_cleaning  == "◯" || item.campus_cleaning == "X" }.length
+     if pan9_a == 0
+     @pan_4_cc_t = 100
+      else
+     @pan_4_cc_t = pan9 * 100 / pan9_a
+     end
+
+     pan10 = @stats_weeks_4.select {|item| item.room_cleaning  == "◯" }.length
+     pan10_a = @stats_weeks_4.select {|item| item.room_cleaning  == "◯" || item.room_cleaning == "X" }.length
+     if pan10_a == 0
+     @pan_4_rc_t = 100
+      else
+     @pan_4_rc_t = pan10 * 100 / pan10_a
+     end
+     end
+
   end
 
   def destroy

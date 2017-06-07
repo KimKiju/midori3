@@ -3,6 +3,7 @@ Rails.application.routes.draw do
     resources :stats, except: [:edit,:update,:show] do
         collection do
           get 'analytics'
+          get 'weeks'
         end
     end
     resources :users, only: [:show]

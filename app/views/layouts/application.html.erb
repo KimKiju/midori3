@@ -33,6 +33,7 @@
     <li style = "font-size: 22px;"> <a href="/users/<%= current_user.id %>">자기통계</a></li>
     <li style = "font-size: 22px;"><%= link_to "전체통계", '/stats' %></li>
     <li style = "font-size: 22px;"><%= link_to "통계분석", '/stats/analytics' %></li>
+     <li style = "font-size: 22px;"><%= link_to "주간통계", '/stats/weeks' %></li>
     <li role="separator" class="divider"></li>
     <li style = "font-size: 22px;"><%= link_to "로그아우트", '/users/sign_out',method: :delete %></li>
     <% else %>

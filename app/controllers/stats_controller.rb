@@ -6,7 +6,7 @@ class StatsController < ApplicationController
   end
 
   def create
-    Stat.create(date:create_params[:date],used_korean:create_params[:used_korean],korean_learning:create_params[:korean_learning],politic_learning:create_params[:politic_learning],roll_calling:create_params[:roll_calling],morning_meeting:create_params[:morning_meeting],attendance:create_params[:attendance],reviewing:create_params[:reviewing],study_time:create_params[:study_time],korean_books:create_params[:korean_books],other_books:create_params[:other_books],room_cleaning:create_params[:room_cleaning],campus_cleaning:create_params[:campus_cleaning],night_roll_calling:create_params[:night_roll_calling],group_num:current_user.year.to_s + current_user.group_id.to_s, user_id:current_user.id,year_num:current_user.year.to_s)
+    Stat.create(date:create_params[:date],used_korean:create_params[:used_korean],korean_learning:create_params[:korean_learning],politic_learning:create_params[:politic_learning],roll_calling:create_params[:roll_calling],morning_meeting:create_params[:morning_meeting],attendance:create_params[:attendance],reviewing:create_params[:reviewing],study_time:create_params[:study_time],korean_books:create_params[:korean_books],other_books:create_params[:other_books],room_cleaning:create_params[:room_cleaning],campus_cleaning:create_params[:campus_cleaning],night_roll_calling:create_params[:night_roll_calling],group_num:current_user.year.to_s + current_user.group_id.to_s, user_id:current_user.id, year_num:current_user.year)
 
     redirect_to :controller => "users", :action => "show", :id => current_user.id
   end

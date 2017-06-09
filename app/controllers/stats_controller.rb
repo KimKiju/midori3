@@ -493,9 +493,9 @@ class StatsController < ApplicationController
 
     d = Date.today
 
-    @study_time_ranking = Stat.joins(:user).includes(:user).where(date: d - 1).order("study_time DESC").limit(6)
-    @korean_books_ranking = Stat.joins(:user).includes(:user).where(date: d - 1).order("korean_books DESC").limit(6)
-    @other_books_ranking = Stat.joins(:user).includes(:user).where(date: d - 1).order("other_books DESC").limit(6)
+    @study_time_ranking = Stat.joins(:user).includes(:user).where(date: d - 1).order("study_time DESC").limit(5)
+    @korean_books_ranking = Stat.joins(:user).includes(:user).where(date: d - 1).order("korean_books DESC").limit(5)
+    @other_books_ranking = Stat.joins(:user).includes(:user).where(date: d - 1).order("other_books DESC").limit(5)
   end
 
 

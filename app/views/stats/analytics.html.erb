@@ -232,14 +232,10 @@
 </div>
 
 
-    <div id="services" class="col-lg-12">
-            <h1 class="page-header">
-                년간독서통계
-            </h1>
-    </div>
-
-    <div class="col-md-12">
+<div class ="col-md-12" style="border: solid 1px #F5F5F5">
+<h3>독서그라프</h3>
       <%= bar_chart [ { name: "일반", data: @other_books_stats },{  name: "로작", data: @korean_books_stats  } ], height: "2700px" %>
     </div>
+</div>
 
 </div>

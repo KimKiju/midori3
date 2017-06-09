@@ -1,95 +1,215 @@
 <div class="row" style="margin-left: 2%; margin-right: 2%;">
 
-
-<div id="services" class="col-md-12" style="margin-bottom: 80px;">
-     <h1 class="page-header">
-        모범독서가(<%= Date.today - 1%>)
-     </h1>
-    <% runk = 1 %>
-
-       <h3>로작</h3>
-    <div class ="col-sm-12 col-xs-12" >
-
-    <% @korean_books_ranking.each do |ranking| %>
-
-   <div class ="col-sm-4 col-xs-4">
-
-      <div class="panel panel-warning" style = "margin-top: 30px;">
-            <div class="panel-heading"><h2><%= runk %>위　<%= ranking.korean_books %>페지</h2>
-            </div>
-            <div class="panel-body">
-              <div style="font-size: 24px;">
-              <a href="<%= ranking.user.image.url %>" data-lightbox="任意の名前" data-title="<%= ranking.user.nickname %>">
-                <%= image_tag ranking.user.image.url, :size => '60x60' %></a>　
-                <span style="font-size: 26px;"><%= link_to "#{ranking.user.nickname}","/users/#{ranking.user.id}" %></span>
-                <span style="font-size: 16px;">(<%= ranking.user.group_id %>분조)</span>
-               </div>
-              <% runk = runk + 1 %>
-            </div>
+    <div id="services" class="col-lg-12">
+         <h1 class="page-header">
+              통계분석
+         </h1>
+    </div>
+<div class="col-md-8" style="border: solid 1px #F5F5F5">
+<h3>지부총독서페지수</h3>
+  <div class="alert alert-danger" role="alert" style="text-align: center; height: 264px; margin-bottom: 8px; padding: 10px;">
+    <h1><strong style="font-size: 90px;"><%= @all_books_sum %></strong>페지</h1>
+    <div class="progress" style ="margin-top: 35px;">
+      <% all_stu = @students.count %>
+      <% achive_stu = 0 %>
+      <% @students.each do |stu| %>
+      <% kor = stu.stats.sum(:korean_books) %>
+      <% oth = stu.stats.sum(:other_books) %>
+      <% if kor + oth >= 10000 %>
+      <% achive_stu = achive_stu + 1 %>
+      <% end %>
+      <% end %>
+      <% correct_percent = achive_stu * 100 / all_stu %>
+      <div class="progress-bar" role="progressbar" aria-valuenow="" aria-valuemin="0" aria-valuemax="100" style="width: <%= correct_percent %>%;">
+        <%= correct_percent %>％
       </div>
-   </div>
-<% end %>
+    </div>
+      <h5 class ="text-right"><strong><%= achive_stu %>명</strong>이 10000페지달성（<%= all_stu %>명중）</h5>
+  </div>
+</div>
+
+<div class="col-md-4" style="border: solid 1px #F5F5F5">
+<h3>학년별독서평균</h3>
+  <div class="alert alert-danger" role="alert" style="margin-bottom: 8px; height: 60px;" >
+     <% if @class1.empty? %>
+     <% class1 = 1 %>
+     <% else %>
+     <% class1 = @class1.count %>
+     <% end %>
+     <% sum1 = 0 %>
+     <% @class1.each do |user| %>
+     <% sum1 = sum1 + user.stats.sum(:korean_books) %>
+     <% sum1 = sum1 + user.stats.sum(:other_books) %>
+     <% end %>
+     <h4 style="font-size: 22px; margin-top: 3px;" class ="text-center">１학년：　<strong><%= sum1 / class1 %>페지</strong> </h4>
+  </div>
+  <div class="alert alert-danger" role="alert" style="margin-bottom: 8px; height: 60px;" >
+     <% if @class2.empty? %>
+     <% class2 = 1 %>
+     <% else %>
+     <% class2 = @class2.count %>
+     <% end %>
+     <% sum2 = 0 %>
+     <% @class2.each do |user| %>
+     <% sum2 = sum2 + user.stats.sum(:korean_books) %>
+     <% sum2 = sum2 + user.stats.sum(:other_books) %>
+     <% end %>
+     <h4 style="font-size: 22px; margin-top: 3px;" class ="text-center">２학년：　<strong><%= sum2 / class2 %>페지</strong> </h4>
+  </div>
+  <div class="alert alert-danger" role="alert" style="margin-bottom: 8px; height: 60px;" >
+     <% if @class3.empty? %>
+     <% class3 = 1 %>
+     <% else %>
+     <% class3 = @class3.count %>
+     <% end %>
+     <% sum3 = 0 %>
+     <% @class3.each do |user| %>
+     <% sum3 = sum3 + user.stats.sum(:korean_books) %>
+     <% sum3 = sum3 + user.stats.sum(:other_books) %>
+     <% end %>
+     <h4 style="font-size: 22px; margin-top: 3px;" class ="text-center">３학년：　<strong><%= sum3 / class3 %>페지</strong> </h4>
+  </div>
+  <div class="alert alert-danger" role="alert" style="margin-bottom: 8px; height: 60px;" >
+     <% if @class4.empty? %>
+     <% class4 = 1 %>
+     <% else %>
+     <% class4 = @class4.count %>
+     <% end %>
+     <% sum4 = 0 %>
+     <% @class4.each do |user| %>
+     <% sum4 = sum4 + user.stats.sum(:korean_books) %>
+     <% sum4 = sum4 + user.stats.sum(:other_books) %>
+     <% end %>
+     <h4 style="font-size: 22px; margin-top: 3px;" class ="text-center">４학년：　<strong><%= sum4 / class4 %>페지</strong> </h4>
+  </div>
 </div>
 
 
-    <% runk = 1 %>
-    <h3>일반서적</h3>
-    <div class ="col-sm-12 col-xs-12" >
-
-     <% @other_books_ranking.each do |ranking| %>
-
-   <div class ="col-sm-4 col-xs-4">
-
-      <div class="panel panel-warning" style = "margin-top: 30px;">
-            <div class="panel-heading"><h2><%= runk %>위　<%= ranking.other_books %>페지</h2>
-            </div>
-            <div class="panel-body">
-              <div style="font-size: 24px;">
-              <a href="<%= ranking.user.image.url %>" data-lightbox="任意の名前" data-title="<%= ranking.user.nickname %>">
-                <%= image_tag ranking.user.image.url, :size => '60x60' %></a>　
-                <span style="font-size: 26px;"><%= link_to "#{ranking.user.nickname}","/users/#{ranking.user.id}" %></span>
-                <span style="font-size: 16px;">(<%= ranking.user.group_id %>분조)</span>
-               </div>
-              <% runk = runk + 1 %>
-            </div>
+<div class="col-md-8" style="border: solid 1px #F5F5F5">
+<h3>지부총학습시간</h3>
+  <div class="alert alert-info" role="alert" style="text-align: center; height: 264px; margin-bottom: 8px; padding: 10px;">
+    <h1><strong style="font-size: 90px;"><%= @all_study_sum %></strong> 분</h1>
+    <div class="progress" style ="margin-top: 35px;">
+      <% all_stu = @students.count %>
+      <% achive_stu = 0 %>
+      <% @students.each do |stu| %>
+      <% if stu.stats.sum(:study_time) >= 30000 %>
+      <% achive_stu = achive_stu + 1 %>
+      <% end %>
+      <% end %>
+      <% correct_percent = achive_stu * 100 / all_stu %>
+      <div class="progress-bar" role="progressbar" aria-valuenow="" aria-valuemin="0" aria-valuemax="100" style="width: <%= correct_percent %>%;">
+        <%= correct_percent %>％
       </div>
-   </div>
-<% end %>
+    </div>
+      <h5 class ="text-right"><strong><%= achive_stu %>명</strong>이 30000분 달성（<%= all_stu %>명중）</h5>
+  </div>
+</div>
+
+
+
+<div class="col-md-4" style="border: solid 1px #F5F5F5">
+<h3>학년별학습평균(하루당)</h3>
+  <div class="alert alert-info" role="alert" style="margin-bottom: 8px; height: 60px;" >
+     <% if @class1.empty? %>
+     <% class1 = 1 %>
+     <% else %>
+     <% class1 = @class1.count %>
+     <% end %>
+     <% sum1 = 0 %>
+     <% @class1.each do |user| %>
+     <% unless user.stats.count == 0 %>
+     <% sum1 += user.stats.sum(:study_time) / user.stats.count %>
+     <% end %>
+     <% end %>
+     <h4 style="font-size: 22px; margin-top: 3px;" class ="text-center">１학년：　<strong><%= sum1 / class1 %>분</strong> </h4>
+  </div>
+  <div class="alert alert-info" role="alert" style="margin-bottom: 8px; height: 60px;" >
+     <% if @class2.empty? %>
+     <% class2 = 1 %>
+     <% else %>
+     <% class2 = @class2.count %>
+     <% end %>
+     <% sum2 = 0 %>
+     <% @class2.each do |user| %>
+     <% unless user.stats.count == 0 %>
+     <% sum2 += user.stats.sum(:study_time) / user.stats.count %>
+     <% end %>
+     <% end %>
+     <h4 style="font-size: 22px; margin-top: 3px;" class ="text-center">２학년：　<strong><%= sum2 / class2 %>분</strong> </h4>
+  </div>
+  <div class="alert alert-info" role="alert" style="margin-bottom: 8px; height: 60px;" >
+     <% if @class3.empty? %>
+     <% class3 = 1 %>
+     <% else %>
+     <% class3 = @class3.count %>
+     <% end %>
+     <% sum3 = 0 %>
+     <% @class3.each do |user| %>
+     <% unless user.stats.count == 0 %>
+     <% sum3 += user.stats.sum(:study_time) / user.stats.count %>
+     <% end %>
+     <% end %>
+     <h4 style="font-size: 22px; margin-top: 3px;" class ="text-center">３학년：　<strong><%= sum3 / class3 %>분</strong> </h4>
+  </div>
+  <div class="alert alert-info" role="alert" style="margin-bottom: 8px; height: 60px;" >
+     <% if @class4.empty? %>
+     <% class4 = 1 %>
+     <% else %>
+     <% class4 = @class4.count %>
+     <% end %>
+     <% sum4 = 0 %>
+     <% @class4.each do |user| %>
+     <% unless user.stats.count == 0 %>
+     <% sum4 += user.stats.sum(:study_time) / user.stats.count %>
+     <% end %>
+     <% end %>
+     <h4 style="font-size: 22px; margin-top: 3px;" class ="text-center">４학년：　<strong><%= sum4 / class4 %>분</strong> </h4>
+  </div>
+</div>
+
+<div class ="col-md-6 col-sm-6" style="border: solid 1px #F5F5F5">
+<h3>모범독서가</h3>
+<div class="panel panel-danger">
+  <div class="panel-heading">
+    <h3 class="panel-title text-center"><%= Date.today - 1%></h3>
+  </div>
+  <% runk = 1 %>
+  <% @other_books_ranking.each do |ranking| %>
+  <div class="panel-body" style="border-bottom: solid 1px #EEEEEE" >
+    <div>
+    <h2 class ="text-center" ><%= runk %>위　<%= ranking.other_books %>페지　ーｰ＞　
+    <a href="<%= ranking.user.image.url %>" data-lightbox="任意の名前" data-title="<%= ranking.user.nickname %>">
+    <%= image_tag ranking.user.image.url, :size => '50x50' %></a>
+    <span style="font-size: 30px;"><% if user_signed_in? %><%= link_to "#{ranking.user.nickname}","/users/#{ranking.user.id}" %><% else %><%= ranking.user.nickname %><% end %></span></h2>
+    </div>
+  </div>
+  <% runk = runk + 1 %>
+  <% end %>
 </div>
 </div>
 
-
-
-<div id="services" class="col-md-12" style="margin-bottom: 80px;">
-     <h1 class="page-header">
-        모범학습가(<%= Date.today - 1%>)
-     </h1>
-    <% runk = 1 %>
-
-       <h3></h3>
-    <div class ="col-sm-12 col-xs-12" >
-
-    <% @study_time_ranking.each do |ranking| %>
-
-   <div class ="col-sm-4 col-xs-4">
-
-      <div class="panel panel-warning" style = "margin-top: 30px;">
-            <div class="panel-heading"><h2><%= runk %>위　<%= ranking.study_time %>분</h2>
-            </div>
-            <div class="panel-body">
-              <div style="font-size: 24px;">
-              <a href="<%= ranking.user.image.url %>" data-lightbox="任意の名前" data-title="<%= ranking.user.nickname %>">
-                <%= image_tag ranking.user.image.url, :size => '60x60' %></a>　
-                <span style="font-size: 26px;"><%= link_to "#{ranking.user.nickname}","/users/#{ranking.user.id}" %></span>
-                <span style="font-size: 16px;">(<%= ranking.user.group_id %>분조)</span>
-               </div>
-              <% runk = runk + 1 %>
-            </div>
-      </div>
-   </div>
-<% end %>
+<div class ="col-md-6 col-sm-6" style="border: solid 1px #F5F5F5">
+<h3>모범학습가</h3>
+<div class="panel panel-info">
+  <div class="panel-heading">
+    <h3 class="panel-title text-center"><%= Date.today - 1%></h3>
+  </div>
+  <% runk = 1 %>
+  <% @study_time_ranking.each do |ranking| %>
+  <div class="panel-body" style="border-bottom: solid 1px #EEEEEE" >
+    <div>
+    <h2 class ="text-center"><%= runk %>위　<%= ranking.study_time %>분　ーｰ＞　
+    <a href="<%= ranking.user.image.url %>" data-lightbox="任意の名前" data-title="<%= ranking.user.nickname %>">
+    <%= image_tag ranking.user.image.url, :size => '50x50' %></a>
+    <span style="font-size: 30px;"><% if user_signed_in? %><%= link_to "#{ranking.user.nickname}","/users/#{ranking.user.id}" %><% else %><%= ranking.user.nickname %><% end %></span></h2>
+    </div>
+  </div>
+  <% runk = runk + 1 %>
+  <% end %>
 </div>
 </div>
+
 
     <div id="services" class="col-lg-12">
             <h1 class="page-header">

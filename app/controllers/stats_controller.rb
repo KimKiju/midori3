@@ -477,9 +477,19 @@ class StatsController < ApplicationController
   end
 
   def analytics
+    @students = User.all
+    @class1 = User.where(year: 1)
+    @class2 = User.where(year: 2)
+    @class3 = User.where(year: 3)
+    @class4 = User.where(year: 4)
+
+    korean_books_sum = Stat.sum(:korean_books)
+    other_books_sum = Stat.sum(:other_books)
+    @all_books_sum = korean_books_sum + other_books_sum
+    @all_study_sum = Stat.sum(:study_time)
+
     @korean_books_stats = Stat.joins(:user).includes(:user).group("users.nickname").order("users.year,users.group_id").sum(:korean_books)
     @other_books_stats = Stat.joins(:user).includes(:user).group("users.nickname").order("users.year,users.group_id").sum(:other_books)
-
 
     d = Date.today
 

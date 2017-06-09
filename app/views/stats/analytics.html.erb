@@ -168,8 +168,29 @@
   </div>
 </div>
 
-<div class ="col-md-6 col-sm-6" style="border: solid 1px #F5F5F5">
-<h3>모범독서가</h3>
+<div class ="col-md-4 col-sm-6" style="border: solid 1px #F5F5F5">
+<h3>모범독서가(로작)</h3>
+<div class="panel panel-danger">
+  <div class="panel-heading">
+    <h3 class="panel-title text-center"><%= Date.today - 1%></h3>
+  </div>
+  <% runk = 1 %>
+  <% @korean_books_ranking.each do |ranking| %>
+  <div class="panel-body" style="border-bottom: solid 1px #EEEEEE" >
+    <div>
+    <h3 class ="text-center" ><%= runk %>위　<%= ranking.korean_books %>페지　ーｰ＞　
+    <a href="<%= ranking.user.image.url %>" data-lightbox="任意の名前" data-title="<%= ranking.user.nickname %>">
+    <%= image_tag ranking.user.image.url, :size => '50x50' %></a>
+    <span style="font-size: 30px;"><% if user_signed_in? %><%= link_to "#{ranking.user.nickname}","/users/#{ranking.user.id}" %><% else %><%= ranking.user.nickname %><% end %></span></h3>
+    </div>
+  </div>
+  <% runk = runk + 1 %>
+  <% end %>
+</div>
+</div>
+
+<div class ="col-md-4 col-sm-6" style="border: solid 1px #F5F5F5">
+<h3>모범독서가(일반)</h3>
 <div class="panel panel-danger">
   <div class="panel-heading">
     <h3 class="panel-title text-center"><%= Date.today - 1%></h3>
@@ -178,10 +199,10 @@
   <% @other_books_ranking.each do |ranking| %>
   <div class="panel-body" style="border-bottom: solid 1px #EEEEEE" >
     <div>
-    <h2 class ="text-center" ><%= runk %>위　<%= ranking.other_books %>페지　ーｰ＞　
+    <h3 class ="text-center" ><%= runk %>위　<%= ranking.other_books %>페지　ーｰ＞　
     <a href="<%= ranking.user.image.url %>" data-lightbox="任意の名前" data-title="<%= ranking.user.nickname %>">
     <%= image_tag ranking.user.image.url, :size => '50x50' %></a>
-    <span style="font-size: 30px;"><% if user_signed_in? %><%= link_to "#{ranking.user.nickname}","/users/#{ranking.user.id}" %><% else %><%= ranking.user.nickname %><% end %></span></h2>
+    <span style="font-size: 30px;"><% if user_signed_in? %><%= link_to "#{ranking.user.nickname}","/users/#{ranking.user.id}" %><% else %><%= ranking.user.nickname %><% end %></span></h3>
     </div>
   </div>
   <% runk = runk + 1 %>
@@ -189,7 +210,7 @@
 </div>
 </div>
 
-<div class ="col-md-6 col-sm-6" style="border: solid 1px #F5F5F5">
+<div class ="col-md-4 col-sm-12" style="border: solid 1px #F5F5F5">
 <h3>모범학습가</h3>
 <div class="panel panel-info">
   <div class="panel-heading">
@@ -199,10 +220,10 @@
   <% @study_time_ranking.each do |ranking| %>
   <div class="panel-body" style="border-bottom: solid 1px #EEEEEE" >
     <div>
-    <h2 class ="text-center"><%= runk %>위　<%= ranking.study_time %>분　ーｰ＞　
+    <h3 class ="text-center"><%= runk %>위　<%= ranking.study_time %>분　ーｰ＞　
     <a href="<%= ranking.user.image.url %>" data-lightbox="任意の名前" data-title="<%= ranking.user.nickname %>">
     <%= image_tag ranking.user.image.url, :size => '50x50' %></a>
-    <span style="font-size: 30px;"><% if user_signed_in? %><%= link_to "#{ranking.user.nickname}","/users/#{ranking.user.id}" %><% else %><%= ranking.user.nickname %><% end %></span></h2>
+    <span style="font-size: 30px;"><% if user_signed_in? %><%= link_to "#{ranking.user.nickname}","/users/#{ranking.user.id}" %><% else %><%= ranking.user.nickname %><% end %></span></h3>
     </div>
   </div>
   <% runk = runk + 1 %>

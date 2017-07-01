@@ -501,11 +501,11 @@ class StatsController < ApplicationController
 
   def weeks
      @before_manday = 0.days.ago.prev_week.strftime("%Y-%m-%d")
-     @before_friday = 0.days.ago.prev_week(:friday).strftime("%Y-%m-%d")
-     @stats_weeks_1 = Stat.where(date: @before_manday..@before_friday).where(year_num: 1)
-     @stats_weeks_2 = Stat.where(date: @before_manday..@before_friday).where(year_num: 2)
-     @stats_weeks_3 = Stat.where(date: @before_manday..@before_friday).where(year_num: 3)
-     @stats_weeks_4 = Stat.where(date: @before_manday..@before_friday).where(year_num: 4)
+     @before_saturday = 0.days.ago.prev_week(:saturday).strftime("%Y-%m-%d")
+     @stats_weeks_1 = Stat.where(date: @before_manday..@before_saturday).where(year_num: 1)
+     @stats_weeks_2 = Stat.where(date: @before_manday..@before_saturday).where(year_num: 2)
+     @stats_weeks_3 = Stat.where(date: @before_manday..@before_saturday).where(year_num: 3)
+     @stats_weeks_4 = Stat.where(date: @before_manday..@before_saturday).where(year_num: 4)
 
      unless @stats_weeks_1.empty?
      stats_count_t = @stats_weeks_1.count.to_i

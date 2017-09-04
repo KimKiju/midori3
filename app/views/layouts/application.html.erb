@@ -14,43 +14,92 @@
                       :type => 'image/jpeg'}) %>
   <%= analytics_init if Rails.env.production? %>
   <%= csrf_meta_tags %>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, shrink-to-fit=no, initial-scale=1">
 </head>
-<body style="height: 100%;">
-<nav class="navbar navbar-default" style="height: 80px; background: radial-gradient(#008000, #32CD32); color: white;">
+
+  <body>
+
+  <nav class="navbar navbar-default navbar-fixed-top" style=" background-color: #17F9AD;">
   <div class="container-fluid">
     <div class="navbar-header">
-        <h1>문력학부지부통계</h1>
+      <a class="navbar-brand" href="#menu-toggle" id="menu-toggle" style="color: black;">
+       <strong>三</strong>
+      </a>
+      <div class="navbar-brand" style="font-size: 28px; font-weight: bold; color: #000080;">
+         문력학부지부통계
+      </div>
     </div>
-
-    <div class="dropdown nav navbar-nav navbar-right" style="padding-top: 1.4%; padding-right: 2%; ">
-  <button class="btn btn-success btn-lg dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" style="background-color: #008000;">
-    MENU
-    <span class="caret"></span>
-  </button>
-   <ul class="dropdown-menu" aria-labelledby="dropdownMenu1" style = "width: 220px;">
-    <% if user_signed_in? %>
-    <li style = "font-size: 22px;"> <%= link_to "통계제출", '/stats/new' %></li>
-    <li style = "font-size: 22px;"> <a href="/users/<%= current_user.id %>">자기통계</a></li>
-    <li style = "font-size: 22px;"><%= link_to "전체통계", '/stats' %></li>
-    <li style = "font-size: 22px;"><%= link_to "통계분석", '/stats/analytics' %></li>
-     <li style = "font-size: 22px;"><%= link_to "주간통계", '/stats/weeks' %></li>
-    <li role="separator" class="divider"></li>
-    <li style = "font-size: 22px;"><%= link_to "로그아우트", '/users/sign_out',method: :delete %></li>
-    <% else %>
-    <li style = "font-size: 22px;"><%= link_to "전체통계", '/stats' %></li>
-    <li style = "font-size: 22px;"><%= link_to "통계분석", '/stats/analytics' %></li>
-    <li role="separator" class="divider"></li>
-    <li style = "font-size: 22px;"><%= link_to "로그인", '/users/sign_in' %></li>
-    <% end %>
-  </ul>
-</div>
+  </div>
 </nav>
 
+   <div id="wrapper">
+        <!-- Sidebar -->
+        <div id="sidebar-wrapper" style="margin-top: 50px; background-color: #CEF9DC;">
+            <ul class="sidebar-nav">
+                <li class="sidebar-brand">
+                    <% if user_signed_in? %>
+                    <a href="/stats/new" style = "border-bottom: solid 1px;">
+                        <i class="glyphicon glyphicon-send"></i>　통계제출
+                    </a>
+                    <a href="/users/<%= current_user.id %>" style = "border-bottom: solid 1px;">
+                        <i class="glyphicon glyphicon-user"></i>　자기통계
+                    </a>
+                    <a href="/stats" style = "border-bottom: solid 1px;">
+                        <i class="glyphicon glyphicon-book"></i>　전체통계
+                    </a>
+                    <a href="/stats/analytics" style = "border-bottom: solid 1px;">
+                        <i class ="glyphicon glyphicon-signal"></i>　통계분석
+                    </a>
+                    <a href="/stats/weeks" style = "border-bottom: solid 1px;">
+                        <i class="glyphicon glyphicon-time"></i>　주간통계
+                    </a>
+                    <%= link_to "　　　로그아우트", '/users/sign_out',method: :delete,style: "border-bottom: solid 1px;" %>
+                    <% else %>
+                    <a href="/stats" style = "border-bottom: solid 1px;">
+                        <i class="glyphicon glyphicon-book"></i>　전체통계
+                    </a>
+                    <a href="/stats/analytics" style = "border-bottom: solid 1px;">
+                        <i class ="glyphicon glyphicon-education"></i>　통계분석
+                    </a>
+                    <a href="/stats/weeks" style = "border-bottom: solid 1px;">
+                        <i class="glyphicon glyphicon-time"></i>　주간통계
+                    </a>
+                    <a href="/users/sign_in" style = "border-bottom: solid 1px;">
+                        　　　로그인
+                    </a>
+                    <% end %>
+                </li>
 
-<%= yield %>
+            </ul>
+        </div>
+        <!-- /#sidebar-wrapper -->
 
-<footer style="bottom: 0; background-color: #F0FFF0; height: 80px; width: 100%; padding-top: 24px; text-align: center; margin-top: 50px; background: radial-gradient(#008000, #32CD32); color: white;">
-  <h5>©produced_by_kiju_at_3.2017</h5>
-</footer>
-</body>
+        <!-- Page Content -->
+        <div id="page-content-wrapper" >
+            <div class="container-fluid" style ="margin-top: 50px;">
+                <div class="row">
+
+    <%= yield %>
+
+              </div>
+        </div>
+        </div>
+
+
+        <!-- jQuery -->
+    <script src="assets/js/jquery.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="assets/js/bootstrap.min.js"></script>
+
+    <!-- Menu Toggle Script -->
+    <script>
+    $("#menu-toggle").click(function(e) {
+        e.preventDefault();
+        $("#wrapper").toggleClass("toggled");
+    });
+    </script>
+  </body>
 </html>

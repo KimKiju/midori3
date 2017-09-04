@@ -1,5 +1,3 @@
-<div class="row" style="margin-left: 2%; margin-right: 2%;">
-
   <div clas="col-md-12" style ="margin-bottom: 20px;">
   <div class="container" style ="padding-top: 1%;">
     <div class="row">
@@ -44,14 +42,14 @@
   </div>
 
 
-<div clas="col-md-12" style = "margin-top: 180px;">
+<div clas="col-md-12" style = "margin-top: 60px;">
   <h3>　자학습그라프(7일간)</h3>
   <%= column_chart @stat_chart.pluck(:date,:study_time), colors: ["#00FF7F", "#999"] %>
 </div>
 
 
   <div class="col-md-12" style="margin-top: 30px;">
-
+    <div class ="table-responsive">
        <table class="table table-striped" style="text-align: center;">
             <tr style ="font-size: 12px;"><th>날자</th><th>우리 말</th><th>자학습</th><th>로작</th><th>일반</th><th>아침점검</th><th>저녁점검</th><th>아침모임</th><th>출석</th><th>정치학습</th><th>우리 말 학습</th><th>하루총화</th><th>학내청소</th><th>호실청소</th>
             <th></th>
@@ -66,9 +64,8 @@
                          </tr>
                  <% end %>
        </table>
-
+    </div>
   </div>
-</div>
 
 <!-- cssの記述 -->
     <style type="text/css">

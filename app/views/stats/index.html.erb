@@ -1,16 +1,8 @@
-<div class="row" style="margin-left: 2%; margin-right: 2%;">
-
-
     <div id="services" class="col-lg-12">
             <h1 class="page-header">
                 전체통계
             </h1>
     </div>
-
-
-</div>
-
-<div class ="row" style="margin-left: 2%; margin-right: 2%;">
 
   <div class="col-md-12" >
 
@@ -52,7 +44,7 @@
 
            <h2>지부(평균)</h2>
            <div class ="chibu wrapper">
-
+      <div id="sampleMainContents" data-spy="scroll" data-target="#sampleScrollSpy" data-offset="112" style="overflow: scroll; height: 220px; padding: 2em; border: 1px solid #ddd; ">
       <div class="alert alert-success col-md-3 col-sm-3" role="alert" style =" text-align: center;margin-bottom: 3px;">우리말:　<strong><%= @chibu_uk_t %>%</strong></div>
 
             <div class="alert alert-success col-md-3 col-sm-3" role="alert" style =" text-align: center;margin-bottom: 3px; ">
@@ -90,25 +82,24 @@
 
       <div class="alert alert-success col-md-3 col-sm-3" role="alert" style =" text-align: center;margin-bottom: 3px;">호실청소:　<strong><%= @chibu_rc_t %>%</strong></div>
       </div>
+      </div>
 
 
 
      <h2>개인</h2>
-
+         <div class ="table-responsive">
             <table class="table table-striped" style="text-align: center;">
                  <tr style="font-size: 12px; text-align: center;"><th></th><th>분조</th><th>이름</th><th>우리 말</th><th>자학습</th><th>로작</th><th>일반</th><th>아침점검</th><th>저녁점검</th><th>아침모임</th><th>출석</th><th>정치학습</th><th>우리 말 학습</th><th>하루총화</th><th>학내청소</th><th>호실청소</th></tr>
                  <% @stats_today.each do |stat| %>
                  <tr><td><a href="<%= stat.user.image.url %>" data-lightbox="任意の名前" data-title="<%= stat.user.nickname %>">
 <%= image_tag stat.user.image.url, :size => '30x30' %></a></td>
 <th><%= stat.user.year %>-<%= stat.user.group_id %></th><th><%= link_to "#{stat.user.nickname}","/users/#{stat.user.id}" %></th><td><%= stat.used_korean %></td><td><%= stat.study_time %></td><td><%= stat.korean_books %></td><td><%= stat.other_books %></td><td><%= stat.roll_calling %></td><td><%= stat.night_roll_calling %></td><td><%= stat.morning_meeting %></td><td><%= stat.attendance %></td><td><%= stat.politic_learning %></td><td><%= stat.korean_learning %></td><td><%= stat.reviewing %></td><td><%= stat.campus_cleaning %></td><td><%= stat.room_cleaning %></td></tr>
-
-
-
                  <% end %>
             </table>
+        </div>
 
                   <h2>분조(평군)</h2>
-
+                <div class ="table-responsive">
                 <table class="table table-striped" style="text-align: center; font-size: 9px;">
 
 
@@ -128,8 +119,8 @@
                  <tr><th>하루총화</th><% @reviewing_t.each do |k| %><td><%= k %>％</td><% end %></tr>
                  <tr><th>학내청소</th><% @campus_cleaning_t.each do |l| %><td><%= l %>％</td><% end %></tr>
                  <tr><th>호실청소</th><% @room_cleaning_t.each do |m| %><td><%= m %>％</td><% end %></tr>
-
-            </table>
+                 </table>
+                 </div>
 
 
 
@@ -178,7 +169,7 @@
 
            <h2>지부(평균)</h2>
            <div class ="chibu wrapper">
-
+      <div id="sampleMainContents" data-spy="scroll" data-target="#sampleScrollSpy" data-offset="112" style="overflow: scroll; height: 220px; padding: 2em; border: 1px solid #ddd; ">
       <div class="alert alert-success col-md-3 col-sm-3" role="alert" style =" text-align: center;margin-bottom: 3px;">우리말:　<strong><%= @chibu_uk_y %>%</strong></div>
 
             <div class="alert alert-success col-md-3 col-sm-3" role="alert" style =" text-align: center;margin-bottom: 3px; ">
@@ -216,11 +207,12 @@
 
       <div class="alert alert-success col-md-3 col-sm-3" role="alert" style =" text-align: center;margin-bottom: 3px;">호실청소:　<strong><%= @chibu_rc_y %>%</strong></div>
       </div>
+      </div>
 
 
 
      <h2>개인</h2>
-
+      <div class ="table-responsive">
         <table class="table table-striped" style="text-align: center;">
                  <tr style="font-size: 12px"><th></th><th>분조</th><th>이름</th><th>우리 말</th><th>자학습</th><th>로작</th><th>일반</th><th>아침점검</th><th>저녁점검</th><th>아침모임</th><th>출석</th><th>정치학습</th><th>우리 말 학습</th><th>하루총화</th><th>학내청소</th><th>호실청소</th></tr>
                  <% @stats_yesterday.each do |stat| %>
@@ -229,15 +221,12 @@
 <th><%= stat.user.year %>-<%= stat.user.group_id %></th><th><%= link_to "#{stat.user.nickname}","/users/#{stat.user.id}" %></th><td><%= stat.used_korean %></td><td><%= stat.study_time %></td><td><%= stat.korean_books %></td><td><%= stat.other_books %></td><td><%= stat.roll_calling %></td><td><%= stat.night_roll_calling %></td><td><%= stat.morning_meeting %></td><td><%= stat.attendance %></td><td><%= stat.politic_learning %></td><td><%= stat.korean_learning %></td><td><%= stat.reviewing %></td><td><%= stat.campus_cleaning %></td><td><%= stat.room_cleaning %></td></tr>
                  <% end %>
             </table>
-
+          </div>
                         <h2>분조(평군)</h2>
 
-                        <table class="table table-striped" style="text-align: center; font-size: 9px">
-
-
+                 <div class ="table-responsive">
+                 <table class="table table-striped" style="text-align: center; font-size: 9px">
                  <tr><th></th><% @y_stats.each do |z| %><th style ="text-align: center;"><%= z.user.year %>-<%= z.user.group_id %></th><% end %></tr>
-
-
                  <tr><th>우리 말</th><% @used_korean_y.each do |a| %><td><%= a %>％</td><% end %></tr>
                  <tr><th>자학습</th><% @study_time_y.each do |b| %><td><%= b %></td><% end %></tr>
                  <tr><th>로작</th><% @korean_books_y.each do |c| %><td><%= c %></td><% end %></tr>
@@ -251,14 +240,10 @@
                  <tr><th>하루총화</th><% @reviewing_y.each do |k| %><td><%= k %>％</td><% end %></tr>
                  <tr><th>학내청소</th><% @campus_cleaning_y.each do |l| %><td><%= l %>％</td><% end %></tr>
                  <tr><th>호실청소</th><% @room_cleaning_y.each do |m| %><td><%= m %>％</td><% end %></tr>
-
-            </table>
-
-
-
+                 </table>
+                 </div>
 
         </div>
      </div>
 
   </div>
-</div>

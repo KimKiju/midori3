@@ -86,7 +86,7 @@
 <div class="col-md-8" style="border: solid 1px #F5F5F5">
 <h3>지부총학습시간</h3>
   <div class="alert alert-info" role="alert" style="text-align: center; height: 264px; margin-bottom: 8px; padding: 10px;">
-    <h1><strong style="font-size: 90px;"><%= @all_study_sum %></strong> 분</h1>
+    <h1><strong style="font-size: 90px;"><%= @all_study_sum / 60 %></strong> 시간</h1>
     <div class="progress" style ="margin-top: 35px;">
       <% all_stu = @students.count %>
       <% achive_stu = 0 %>
@@ -100,7 +100,7 @@
         <%= correct_percent %>％
       </div>
     </div>
-      <h5 class ="text-right"><strong><%= achive_stu %>명</strong>이 30000분 달성（<%= all_stu %>명중）</h5>
+      <h5 class ="text-right"><strong><%= achive_stu %>명</strong>이 500시간 달성（<%= all_stu %>명중）</h5>
   </div>
 </div>
 

@@ -22,7 +22,7 @@
      <div class="col-md-4 col-sm-4" >
      <div class="alert alert-success" role="alert">
        <h4>총학습시간</h4>
-       <h2><%= @stat_all.sum(:study_time) %>분</h2>
+       <h2><%= @stat_all.sum(:study_time) / 60 %>시간</h2>
      </div>
      </div>
      <div class="col-md-4 col-sm-4" >
